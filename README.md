@@ -1,14 +1,18 @@
 # Design Skills by Jerry
 
-给设计同事的一套 AI 工作方法：把需求变成可评审的 Web 原型，把设计稿里的行为整理成可交付的交互说明。
+本仓库包含的技能旨在加速设计过程，而不是取代设计思考。
+针对目前我们的业务类型，本仓库当前和未来的skill将以以两套目标平台展开：TV端（OS 10，OS Go！，majica）和Web端（SSP和WI）。
 
-**按需安装，一个 skill 一个包。** 不需要安装整套，也不包含作者的本机插件清单、账号配置、个人路径或私人 Figma 原始档案。
+**前置条件** 
+电脑上已经装好Agent工具桌面端（如ChatGPT，Claude，Antigravity，Workbuddy，TRAE等），且已经对其使用有一定了解。[Agent基础知识](docs/agent_intro.md)
 
-当前版本 **0.1.0** · 平台说明核对于 **2026-10-26**。已检查文件结构和下载包；各平台步骤依据官方文档整理，尚未逐个平台完成安装实测。账号、地区、版本和组织权限可能影响可见入口。
+**借助Agent的一键安装方法（推荐）**
+把下面的prompt复制给你的Agent，并在适当时候给予对应的权限。
+`阅读仓库说明，安装这个仓库内的所有skill https://github.com/OrsonKrennlc/design-skills-by-jerry`
 
-直接下载独立安装包：[v0.1.0 Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0)。
+独立安装包：[v0.1.0 Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0)。
 
-## 先选你要做的事
+## 技能列表
 
 | Skill | 用来做什么 | 典型交付 | 独立下载 |
 | --- | --- | --- | --- |
@@ -16,17 +20,19 @@
 | [web-prototype-design](skills/web-prototype-design/SKILL.md) | 按需求和设计系统设计 Web 页面、关键状态，按需连接演示 | 可编辑的 Figma 页面与状态；需要时增加可点击原型 | [ZIP](dist/web-prototype-design.zip) |
 | [web-interaction-spec](skills/web-interaction-spec/SKILL.md) | 按 PRD、当前页面和定稿整理 Web / 后台交互说明 | 页面旁的 `Interaction` 说明板或可复制正文 | [ZIP](dist/web-interaction-spec.zip) |
 
-电视 skill 适用于不同 TV OS，不代表默认采用 Apple tvOS 规则。三个 skill 均不负责生产前端实现。可以只装其中一个；skill 之间没有安装依赖。
+`tvos-interaction-spec`原始基于OS 10 Home的交互文档训练，并针对 majica 项目进行过特化，在这两个典型场景下拥有理论上最佳的效果。
+`web-prototype-design`已针对SSP的设计风格进行特化训练，应用于风格迥异的Web应用时可能导致产出风格很像的情况。
+`web-prototype-design`理论上针对所有Web界面通用，不限于SSP，但是尚未经过实测。
 
-## 第一次使用：三步完成
+## 手动安装方法
 
-1. **下载一个 skill。** 点击上表对应 ZIP，进入 GitHub 文件页面后点下载。ZIP 内有完整技能文件夹，包含 `SKILL.md` 与配套参考资料；不要只复制入口文件。
-2. **在你的平台安装。** 按下表选择教程。这里的“部署”就是把方法包安装到 AI 工具，不需要搭建网站或服务器。
+1. **下载 skill。** 点击上表对应 ZIP，进入 GitHub 文件页面后点下载。ZIP 内有完整技能文件夹，包含 `SKILL.md` 与配套参考资料；不要只复制入口文件。
+2. **在你的Agent中安装。** 按下表选择教程。这里的“部署”就是把方法包安装到 AI 工具，不需要搭建网站或服务器。
 3. **提供任务与交付位置。** 给 AI 当前需求、Figma 节点、定稿样例，以及“只写草稿 / 写回说明板 / 先做页面 / 需要可点击演示”。要读写 Figma 时，再单独连接 Figma。
 
 也可以从 **Code → Download ZIP** 获取全仓库，再取出 `skills/` 内想安装的一个文件夹。全仓库 ZIP 不能当作单个 skill 上传。
 
-## 选择你的平台
+## 不同Agent应用下的安装方法示例
 
 | 平台 | 单个 skill 怎么装 | Figma 怎么连 | 教程 |
 | --- | --- | --- | --- |
@@ -87,13 +93,6 @@ design-skills-by-jerry/
 └── CONTRIBUTING.md                 维护和发版约定
 ```
 
-后续增加 skill 时，新建 `skills/<skill-name>/` 即可。每个目录自包含，不依赖作者电脑上的其他文件。
-
-## 共享版与个人版的区别
-
-保留方法和关键行为约束；把个人会话默认约定改为服从当前项目；适配官方 MCP 与 Figwright 两种工具路径。私人 Figma 文件链接、文件 key、节点索引、原始项目导出和个人插件清单不进入共享包。参考例稿已改成去标识的方法示例，不代表任何实际项目的已确认业务规则。
-
-`agents/openai.yaml` 仅包含这个 skill 的展示名称、简介和启动提示，是可选的界面元数据，不是本机插件清单。其他平台使用 `SKILL.md` 和 `references/` 即可。
 
 ## 维护与校验
 
