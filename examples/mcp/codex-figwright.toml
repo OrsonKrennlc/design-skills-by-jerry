@@ -1,0 +1,4 @@
+# 合并此服务段到本地 Codex 配置，不要覆盖其他服务。
+[mcp_servers.figwright]
+command = "npx"
+args = ["-y", "@figwright/mcp@latest"]

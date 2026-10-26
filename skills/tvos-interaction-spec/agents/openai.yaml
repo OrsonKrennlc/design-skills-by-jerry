@@ -1,0 +1,4 @@
+interface:
+  display_name: "电视页面交互文档"
+  short_description: "沿用用户定稿，在 Figma 页面旁编写简洁完整的电视交互说明与六键焦点规则"
+  default_prompt: "使用 $tvos-interaction-spec，按用户定稿在指定 Figma 页面旁完成交互文档，每个状态含 Screen Design、Entry Point、Interaction 和 Controls。"
