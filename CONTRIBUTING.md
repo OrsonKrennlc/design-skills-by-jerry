@@ -1,3 +1,7 @@
+---
+title: 维护与发布
+---
+
 # 维护与发布
 
 ## 一份源文件，按单个 skill 分发
@@ -53,3 +57,22 @@ python3 scripts/package_skills.py --check
 Release 中的兼容包命名为 `<skill-name>-flat.zip`，其余标准包名称不变。Release 的 `SHA256SUMS` 按附件名生成，与仓库 `dist/` 中带子目录的校验文件分别使用。
 
 结构校验不代表五个平台安装已实测，静态截图也不代表运行产品已测试。记录实际通过的验证层级即可。
+
+## 维护文档网站
+
+文档站使用 GitHub Pages 与 [Minimal](https://github.com/pages-themes/minimal) 主题，发布来源为 `main` 分支根目录。提交推送后，由 GitHub 自动构建和发布。
+
+- `index.md` 是网站首页，`README.md` 是 GitHub 仓库入口。调整技能或版本信息时，检查这两个入口是否一致。
+- 教程继续维护在 `docs/` 中。新页面需要包含带 `title` 的 YAML 头，再按需加入 `_config.yml` 的 `navigation`。
+- 文档之间保留 `.md` 相对链接，网站构建时由 `jekyll-relative-links` 转换为网页地址。下载链接使用 `dist/` 中的现有安装包。
+- `_layouts/default.html` 负责文档导航，`assets/css/style.scss` 在 Minimal 原样式上补充中文排版、响应式布局和表格滚动。
+- 技能源文件不参与网站渲染；首页中的技能名称链接到 GitHub 源文件。修改主题配置不会改变技能安装包。
+
+本地预览需要 Ruby 与 Bundler。在仓库根目录执行：
+
+```bash
+bundle install
+bundle exec jekyll serve
+```
+
+预览地址为 `http://127.0.0.1:4000/design-skills-by-jerry/`。发布后检查首页、文档导航、页内链接和 ZIP 下载；构建失败时，到仓库的 Actions 中查看 Pages 构建日志。

@@ -5,3 +5,9 @@ __pycache__/
 .env
 .env.*
 !.env.example
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+.bundle/
+vendor/bundle/

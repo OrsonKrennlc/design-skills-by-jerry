@@ -1,38 +1,52 @@
 # Design Skills by Jerry
 
-本仓库包含的技能旨在加速设计过程，而不是取代设计思考。
-针对目前我们的业务类型，本仓库当前和未来的skill将以以两套目标平台展开：TV端（OS 10，OS Go！，majica）和Web端（SSP和WI）。
+[文档网站](https://orsonkrennlc.github.io/design-skills-by-jerry/) · [安装教程](docs/platforms.md) · [连接 Figma](docs/figma.md) · [使用方法](docs/usage.md) · [v0.1.0 Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0)
 
-**前置条件** 
-电脑上已经装好Agent工具桌面端（如ChatGPT，Claude，Antigravity，Workbuddy，TRAE等），且已经对其使用有一定了解。[Agent基础知识](docs/agent_intro.md)
+本仓库提供用于设计工作的 Agent 技能，主要面向 TV 端（OS 10、OS Go!、majica）与 Web 端（SSP、WI）。技能帮助整理说明和完成重复操作，设计判断与业务规则仍需要由项目负责人确认。
 
-**借助Agent的一键安装方法（推荐）**
-把下面的prompt复制给你的Agent，并在适当时候给予对应的权限。
-`阅读仓库说明，安装这个仓库内的所有skill https://github.com/OrsonKrennlc/design-skills-by-jerry`
+## 开始使用
 
-独立安装包：[v0.1.0 Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0)。
+已经安装支持 Skill 的 Agent 应用后，按当前任务选择所需技能。第一次接触 Agent，可以先读 [Agent 使用入门](docs/agent_intro.md)，了解基本概念、授权范围和结果验收。
+
+完整教程可在[文档网站](https://orsonkrennlc.github.io/design-skills-by-jerry/)阅读，也可以在仓库中直接查看：
+
+| 你要做什么 | 入口 |
+| --- | --- |
+| 了解 Agent 及授权注意事项 | [Agent 使用入门](docs/agent_intro.md) |
+| 在当前应用中安装技能 | [平台安装教程](docs/platforms.md) |
+| 让 Agent 读写 Figma | [Figma 连接教程](docs/figma.md) |
+| 给出任务、参考材料与交付要求 | [使用方法与提示词](docs/usage.md) |
+
+也可以把这段话发给支持安装 Skill 的 Agent，再按提示授予必要权限：
+
+```text
+阅读仓库说明，帮我选择并安装本次任务需要的技能：
+https://github.com/OrsonKrennlc/design-skills-by-jerry
+```
 
 ## 技能列表
 
 | Skill | 用来做什么 | 典型交付 | 独立下载 |
 | --- | --- | --- | --- |
-| [tvos-interaction-spec](skills/tvos-interaction-spec/SKILL.md) | 写、改、审查电视页面交互说明，核对焦点和遥控器六键 | `Screen Design / Entry Point / Interaction / Controls` | [ZIP](dist/tvos-interaction-spec.zip) |
-| [web-prototype-design](skills/web-prototype-design/SKILL.md) | 按需求和设计系统设计 Web 页面、关键状态，按需连接演示 | 可编辑的 Figma 页面与状态；需要时增加可点击原型 | [ZIP](dist/web-prototype-design.zip) |
-| [web-interaction-spec](skills/web-interaction-spec/SKILL.md) | 按 PRD、当前页面和定稿整理 Web / 后台交互说明 | 页面旁的 `Interaction` 说明板或可复制正文 | [ZIP](dist/web-interaction-spec.zip) |
+| [tvos-interaction-spec](skills/tvos-interaction-spec/SKILL.md) | 写、改、审查电视页面交互说明，核对焦点和遥控器六键 | `Screen Design / Entry Point / Interaction / Controls` | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/tvos-interaction-spec.zip) |
+| [web-prototype-design](skills/web-prototype-design/SKILL.md) | 按需求和设计系统设计 Web 页面、关键状态，按需连接演示 | 可编辑的 Figma 页面与状态；需要时增加可点击原型 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/web-prototype-design.zip) |
+| [web-interaction-spec](skills/web-interaction-spec/SKILL.md) | 按 PRD、当前页面和定稿整理 Web / 后台交互说明 | 页面旁的 `Interaction` 说明板或可复制正文 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/web-interaction-spec.zip) |
 
-`tvos-interaction-spec`原始基于OS 10 Home的交互文档训练，并针对 majica 项目进行过特化，在这两个典型场景下拥有理论上最佳的效果。
-`web-prototype-design`已针对SSP的设计风格进行特化训练，应用于风格迥异的Web应用时可能导致产出风格很像的情况。
-`web-prototype-design`理论上针对所有Web界面通用，不限于SSP，但是尚未经过实测。
+`tvos-interaction-spec` 的写作方法参考了 OS 10 Home 的交互文档，并针对 majica 项目作过调整。用于其他电视项目时，需要提供该项目的焦点规则和定稿样例。
+
+`web-prototype-design` 包含针对 SSP 设计风格的约定。用于其他 Web 项目时，应提供当前项目的设计系统和参考页面；其他风格尚未经过完整实测。
+
+固定版本的独立安装包也可从 [v0.1.0 Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0) 下载。
 
 ## 手动安装方法
 
-1. **下载 skill。** 点击上表对应 ZIP，进入 GitHub 文件页面后点下载。ZIP 内有完整技能文件夹，包含 `SKILL.md` 与配套参考资料；不要只复制入口文件。
-2. **在你的Agent中安装。** 按下表选择教程。这里的“部署”就是把方法包安装到 AI 工具，不需要搭建网站或服务器。
+1. **下载 skill。** 点击上表对应 ZIP 直接下载。ZIP 内有完整技能文件夹，包含 `SKILL.md` 与配套参考资料；不要只复制入口文件。
+2. **在你的 Agent 中安装。** 按下表选择教程。安装技能不需要搭建网站或服务器。
 3. **提供任务与交付位置。** 给 AI 当前需求、Figma 节点、定稿样例，以及“只写草稿 / 写回说明板 / 先做页面 / 需要可点击演示”。要读写 Figma 时，再单独连接 Figma。
 
 也可以从 **Code → Download ZIP** 获取全仓库，再取出 `skills/` 内想安装的一个文件夹。全仓库 ZIP 不能当作单个 skill 上传。
 
-## 不同Agent应用下的安装方法示例
+## 不同 Agent 应用下的安装方法示例
 
 | 平台 | 单个 skill 怎么装 | Figma 怎么连 | 教程 |
 | --- | --- | --- | --- |
@@ -70,7 +84,12 @@ ChatGPT 支持时可用 `@` 选择已安装技能，Codex 可用 `$`；也可以
 
 ```text
 design-skills-by-jerry/
-├── README.md                       从这里开始
+├── README.md                       GitHub 仓库入口
+├── index.md                        文档网站首页
+├── _config.yml                     Minimal 主题与文档导航
+├── _layouts/default.html           网站布局
+├── assets/css/style.scss           中文排版与响应式适配
+├── Gemfile                         网站本地预览依赖
 ├── LICENSE                         Apache-2.0
 ├── VERSION                         当前技能包版本
 ├── skills/                         唯一维护的技能源文件
@@ -81,9 +100,11 @@ design-skills-by-jerry/
 │       ├── agents/openai.yaml      可选的名称、简介和启动提示
 │       └── references/             方法、检查点与去标识例稿
 ├── docs/
+│   ├── agent_intro.md              Agent 基本概念、授权与验收
 │   ├── platforms.md                五个平台的安装、更新与卸载
 │   ├── figma.md                    官方连接、Figwright 与排查
-│   └── usage.md                    输入、提示词与验收
+│   ├── usage.md                    输入、提示词与验收
+│   └── releases/                   版本发布说明
 ├── examples/mcp/                   可复制配置，不会自动启用
 ├── scripts/package_skills.py        检查并生成独立压缩包
 ├── dist/
@@ -93,6 +114,12 @@ design-skills-by-jerry/
 └── CONTRIBUTING.md                 维护和发版约定
 ```
 
+
+## 文档网站
+
+在线地址：[Design Skills by Jerry](https://orsonkrennlc.github.io/design-skills-by-jerry/)。网站使用 [Minimal](https://github.com/pages-themes/minimal) 主题，首页提供技能下载与教程入口，各文档页共用导航。
+
+GitHub Pages 从 `main` 分支根目录构建，推送后自动更新。网站首页维护在 `index.md`，教程沿用 `docs/` 中的 Markdown 文件。主题配置、本地预览与发布检查见[维护文档网站](CONTRIBUTING.md#维护文档网站)。
 
 ## 维护与校验
 

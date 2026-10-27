@@ -1,3 +1,7 @@
+---
+title: Agent 使用入门
+---
+
 # Agent 使用入门
 
 Agent（智能体）是一类能围绕目标执行任务的 AI 系统。你告诉它要完成什么，它会根据手头的材料选择下一步，调用可用工具，查看结果，再决定继续、调整做法，还是向你提问。[Anthropic 对 Agent 的介绍](https://www.anthropic.com/research/building-effective-agents)采用了这样的定义。

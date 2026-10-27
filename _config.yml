@@ -1,0 +1,46 @@
+title: Design Skills by Jerry
+description: 面向 TV 与 Web 设计工作的 Agent 技能、安装教程与使用指南。
+lang: zh-CN
+timezone: Asia/Shanghai
+url: https://orsonkrennlc.github.io
+baseurl: /design-skills-by-jerry
+repository: OrsonKrennlc/design-skills-by-jerry
+
+remote_theme: pages-themes/minimal@v0.2.0
+show_downloads: false
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-relative-links
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+navigation:
+  - title: 首页与下载
+    url: /
+  - title: Agent 使用入门
+    url: /docs/agent_intro.html
+  - title: 安装技能
+    url: /docs/platforms.html
+  - title: 连接 Figma
+    url: /docs/figma.html
+  - title: 使用方法与提示词
+    url: /docs/usage.html
+  - title: v0.1.0 发布说明
+    url: /docs/releases/0.1.0.html
+  - title: 维护与发布
+    url: /CONTRIBUTING.html
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - VERSION
+  - skills
+  - scripts
+  - vendor
