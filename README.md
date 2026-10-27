@@ -6,23 +6,29 @@
 
 ## 开始使用
 
-已经安装支持 Skill 的 Agent 应用后，按当前任务选择所需技能。第一次接触 Agent，可以先读 [Agent 使用入门](docs/agent_intro.md)，了解基本概念、授权范围和结果验收。
+推荐让 Agent 一次性安装本仓库的全部技能，省去逐个下载、解压和导入的重复操作。装好后，按具体任务调用所需技能即可。第一次接触 Agent，可以先读 [Agent 使用入门](docs/agent_intro.md)。
+
+### 推荐：让 Agent 安装全部技能
+
+把下面的提示词发给支持安装技能的 Agent，再按提示授予必要权限：
+
+```text
+阅读这个仓库的说明，帮我将 skills/ 下的全部技能安装到当前使用的 Agent 中：
+https://github.com/OrsonKrennlc/design-skills-by-jerry
+请根据当前环境选择正确的安装方式，保留完整技能文件夹和参考资料。
+完成后列出已安装的技能和安装位置；需要我完成的步骤，请给出具体操作。
+```
+
+详细步骤和安装后的检查见[安装教程](docs/platforms.md)。当前应用不能直接安装时，再使用下方的手动安装方法。需要读写 Figma 时，另行完成工具连接。
 
 完整教程可在[文档网站](https://orsonkrennlc.github.io/design-skills-by-jerry/)阅读，也可以在仓库中直接查看：
 
 | 你要做什么 | 入口 |
 | --- | --- |
 | 了解 Agent 及授权注意事项 | [Agent 使用入门](docs/agent_intro.md) |
-| 在当前应用中安装技能 | [平台安装教程](docs/platforms.md) |
+| 让 Agent 一次安装全部技能 | [安装教程](docs/platforms.md) |
 | 让 Agent 读写 Figma | [Figma 连接教程](docs/figma.md) |
 | 给出任务、参考材料与交付要求 | [使用方法与提示词](docs/usage.md) |
-
-也可以把这段话发给支持安装 Skill 的 Agent，再按提示授予必要权限：
-
-```text
-阅读仓库说明，帮我选择并安装本次任务需要的技能：
-https://github.com/OrsonKrennlc/design-skills-by-jerry
-```
 
 ## 技能列表
 
@@ -36,17 +42,19 @@ https://github.com/OrsonKrennlc/design-skills-by-jerry
 
 `web-prototype-design` 包含针对 SSP 设计风格的约定。用于其他 Web 项目时，应提供当前项目的设计系统和参考页面；其他风格尚未经过完整实测。
 
-固定版本的独立安装包也可从 [v0.1.0 Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0) 下载。
+下方的手动安装方法和表中的 ZIP 下载作为备用。固定版本的独立安装包也可从 [v0.1.0 Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0) 下载。
 
-## 手动安装方法
+## 备用：手动安装
+
+无法让 Agent 直接安装，或希望自己管理技能文件时，可以按以下步骤操作。
 
 1. **下载 skill。** 点击上表对应 ZIP 直接下载。ZIP 内有完整技能文件夹，包含 `SKILL.md` 与配套参考资料；不要只复制入口文件。
 2. **在你的 Agent 中安装。** 按下表选择教程。安装技能不需要搭建网站或服务器。
 3. **提供任务与交付位置。** 给 AI 当前需求、Figma 节点、定稿样例，以及“只写草稿 / 写回说明板 / 先做页面 / 需要可点击演示”。要读写 Figma 时，再单独连接 Figma。
 
-也可以从 **Code → Download ZIP** 获取全仓库，再取出 `skills/` 内想安装的一个文件夹。全仓库 ZIP 不能当作单个 skill 上传。
+也可以从 **Code → Download ZIP** 获取全仓库，再取出 `skills/` 内的各技能文件夹，按平台要求分别导入。全仓库 ZIP 不能当作单个 skill 上传。
 
-## 不同 Agent 应用下的安装方法示例
+### 各平台的手动安装入口
 
 | 平台 | 单个 skill 怎么装 | Figma 怎么连 | 教程 |
 | --- | --- | --- | --- |
@@ -101,7 +109,7 @@ design-skills-by-jerry/
 │       └── references/             方法、检查点与去标识例稿
 ├── docs/
 │   ├── agent_intro.md              Agent 基本概念、授权与验收
-│   ├── platforms.md                五个平台的安装、更新与卸载
+│   ├── platforms.md                Agent 批量安装与手动备用教程
 │   ├── figma.md                    官方连接、Figwright 与排查
 │   ├── usage.md                    输入、提示词与验收
 │   └── releases/                   版本发布说明
@@ -123,7 +131,7 @@ GitHub Pages 从 `main` 分支根目录构建，推送后自动更新。网站�
 
 ## 维护与校验
 
-维护者使用 Python 3.10+，无第三方依赖；普通使用者下载 ZIP 即可。
+打包校验需要 Python 3.10+，无第三方依赖；普通使用者可以直接让 Agent 安装技能。
 
 ```bash
 python3 scripts/package_skills.py

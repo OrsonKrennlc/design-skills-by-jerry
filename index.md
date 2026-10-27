@@ -6,14 +6,29 @@ title: 首页与下载
 
 Design Skills by Jerry 提供三个可独立安装的 Agent 技能，用于电视交互说明、Web 原型设计和 Web 交互文档。主要面向 TV 端（OS 10、OS Go!、majica）与 Web 端（SSP、WI）的设计工作。
 
+## 推荐：让 Agent 安装全部技能
+
+把下面的提示词发给支持安装技能的 Agent，让它一次装好本仓库的全部技能，省去逐个下载、解压和导入的重复操作：
+
+```text
+阅读这个仓库的说明，帮我将 skills/ 下的全部技能安装到当前使用的 Agent 中：
+https://github.com/OrsonKrennlc/design-skills-by-jerry
+请根据当前环境选择正确的安装方式，保留完整技能文件夹和参考资料。
+完成后列出已安装的技能和安装位置；需要我完成的步骤，请给出具体操作。
+```
+
+按提示授予必要权限，完成后确认技能已安装。之后用到哪个，就在任务中指定哪个。详细步骤见[安装教程](docs/platforms.md)；当前应用无法直接安装时，再使用其中的手动备用方法。
+
 ## 从这里开始
 
 1. 第一次使用 Agent，先读 [Agent 使用入门](docs/agent_intro.md)，了解它能做什么，以及怎样授予权限。
-2. 根据当前任务选择一个技能，按[平台安装教程](docs/platforms.md)安装。
+2. 用上面的提示词，让 Agent 一次安装全部技能。
 3. 需要读写设计文件时，按[连接 Figma](docs/figma.md)完成工具连接。
 4. 参考[使用方法与提示词](docs/usage.md)，提供当前需求、页面链接和交付范围。
 
-## 选择技能
+## 技能列表与手动下载
+
+三个技能可以分别调用。需要手动安装或保存安装包时，再使用下面的 ZIP 下载。
 
 | 技能 | 适用任务 | 安装包 |
 | --- | --- | --- |
@@ -24,17 +39,6 @@ Design Skills by Jerry 提供三个可独立安装的 Agent 技能，用于电�
 ZIP 内含完整技能文件夹和参考资料。若导入器要求 ZIP 根层直接包含 `SKILL.md`，请按[安装教程中的说明](docs/platforms.md#先检查下载内容)选择兼容包。
 
 当前版本为 v0.1.0。你可以查看[发布说明](docs/releases/0.1.0.md)，或到 [GitHub Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0)下载固定版本的安装包。
-
-## 借助 Agent 安装
-
-已经使用支持安装 Skill 的 Agent 时，可以把这段话发给它：
-
-```text
-阅读仓库说明，帮我选择并安装本次任务需要的技能：
-https://github.com/OrsonKrennlc/design-skills-by-jerry
-```
-
-安装 Skill 和连接 Figma 是两个步骤。需要工具连接时，再授予对应权限。
 
 ## 开始一个任务
 

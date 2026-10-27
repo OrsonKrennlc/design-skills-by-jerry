@@ -6,7 +6,7 @@ title: 使用方法与提示词
 
 ## 开始前
 
-确认当前 Agent 能读取你提供的材料，并已安装本次任务需要的技能。需要实际读写 Figma 时，再按[连接教程](figma.md)配置工具；只交付正文时可以直接使用附件材料。第一次使用 Agent，可以先读[使用入门](agent_intro.md)。
+首次使用时，推荐先按[安装教程](platforms.md)让 Agent 一次装好本仓库的全部技能，再在任务中指定要使用的技能。确认当前 Agent 能读取你提供的材料；需要实际读写 Figma 时，再按[连接教程](figma.md)配置工具。只交付正文时可以直接使用附件材料。第一次使用 Agent，可以先读[使用入门](agent_intro.md)。
 
 ## 给 AI 什么材料
 
@@ -24,7 +24,7 @@ title: 使用方法与提示词
 
 ## 电视交互说明
 
-先安装 `tvos-interaction-spec`，按需要连接 Figma。
+本节使用 `tvos-interaction-spec`，需要写入画布时连接可写的 Figma 工具。
 
 ```text
 使用 tvos-interaction-spec技能，在【Figma链接】中完成任务：
@@ -45,7 +45,7 @@ title: 使用方法与提示词
 
 ## Web 原型页面设计
 
-先安装 `web-prototype-design`，连接可写的 Figma 工具。
+本节使用 `web-prototype-design`，需要连接可写的 Figma 工具。
 
 ```text
 使用 web-prototype-design技能，在【Figma链接】中完成任务：
@@ -65,7 +65,7 @@ title: 使用方法与提示词
 
 ## Web 交互说明
 
-先安装 `web-interaction-spec`。只用上传资料写正文时，可以暂不连接 Figma。
+本节使用 `web-interaction-spec`。只用上传资料写正文时，可以暂不连接 Figma。
 
 ```text
 使用 web-interaction-spec技能，在【Figma链接】中完成任务：
@@ -86,7 +86,7 @@ title: 使用方法与提示词
 
 ## 可选组合
 
-如果同时安装了原型与 Web 说明两个技能，可以先用 `web-prototype-design` 完成页面并评审定稿，再用 `web-interaction-spec` 为同一版本补说明。也可以只选其中一项，不影响其独立使用。
+安装完成后，可以先用 `web-prototype-design` 完成页面并评审定稿，再用 `web-interaction-spec` 为同一版本补说明。也可以只调用其中一项，不影响其独立使用。
 
 组合时把页面修改和说明修改的范围分别说清楚。说明任务不会自动授权修改原 UI；读取样例也不会授权更改样例。
 
