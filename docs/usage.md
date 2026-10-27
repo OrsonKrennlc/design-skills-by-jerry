@@ -18,6 +18,8 @@ title: 使用方法与提示词
 | 任务范围 | 哪些页面可写，哪些只是学习来源 |
 | 交付方式 | 正文、Figma 说明板、页面评审或可点击演示 |
 
+使用下面的范例时，请随任务附上 Markdown 格式（`.md`）的 PRD，将 `【PRD】` 替换为附件文件名，其他 `【…】` 替换为实际 Figma 链接、目标 ID 和 Section 名称。
+
 没有 PRD 时提供现有需求即可；不要为了使用技能补造一份。只提供学习链接不代表允许修改那个文件。需要英文说明板时直接说明，中文聊天不会自动要求翻译 UI。
 
 ## 电视交互说明
@@ -25,15 +27,10 @@ title: 使用方法与提示词
 先安装 `tvos-interaction-spec`，按需要连接 Figma。
 
 ```text
-使用 tvos-interaction-spec。
-产品是电视 OS，使用遥控器六键。
-目标：[当前状态画面的节点链接]
-样例：[同版本已定稿说明板链接]
-范围：设置页主状态，以及打开/关闭确认弹窗的状态。
-请在当前 Section 的画面旁写入 Documentation / interaction。
-沿用样例语言和版式；每个状态写齐 Screen Design、Entry Point、
-Interaction 与 Controls。Controls 按各张图的实际焦点写。
-业务规则见附件；确实缺失的行为集中列出，不改原 UI。
+使用 tvos-interaction-spec技能，在【Figma链接】中完成任务：
+需求：为【目标ID】编写电视页面交互说明。阅读【PRD】文档和【Figma中目标页面所在Section名】中的图片，了解任务目标、页面状态和遥控器操作规则，参考我给出的【Figma中参考说明所在Section名】中的定稿说明，沿用其语言、结构和版式。然后在【Figma中新建空白目标Section名】中完成说明。
+每个状态写齐 Screen Design、Entry Point、Interaction 与 Controls，Controls 按各张图的实际焦点写，覆盖遥控器六键和返回焦点。
+本轮只编写交互说明，不修改原 UI；缺少的业务规则请集中列出，不自行补成既定规则。
 ```
 
 只要一行一页大纲时：
@@ -49,8 +46,6 @@ Interaction 与 Controls。Controls 按各张图的实际焦点写。
 ## Web 原型页面设计
 
 先安装 `web-prototype-design`，连接可写的 Figma 工具。
-
-使用下面的范例时，请随任务附上 Markdown 格式（`.md`）的 PRD，将 `【PRD】` 替换为附件文件名，其他 `【…】` 替换为实际 Figma 链接、目标 ID 和 Section 名称。
 
 ```text
 使用 web-prototype-design技能，在【Figma链接】中完成任务：
@@ -73,14 +68,10 @@ Interaction 与 Controls。Controls 按各张图的实际焦点写。
 先安装 `web-interaction-spec`。只用上传资料写正文时，可以暂不连接 Figma。
 
 ```text
-使用 web-interaction-spec。
-根据附件 PRD、当前 Figma 页面和已定稿样例，整理创建与编辑流程的交互说明。
-目标：[节点链接]
-样例：[说明板链接]
-写入位置：当前页面旁的 Interaction 说明板。
-结构沿用 Entry → Function & Interaction；按当前画面的区域和控件组织。
-只写有依据的规则，不扩写 PRD 未提及的实现细节，不修改 UI。
-只有会改变当前任务结果的真实冲突需要集中列出。
+使用 web-interaction-spec技能，在【Figma链接】中完成任务：
+需求：为【目标ID】编写 Web / 后台交互说明。阅读【PRD】文档和【Figma中目标页面所在Section名】中的图片，了解任务目标、字段规则和页面状态，参考我给出的【Figma中参考说明所在Section名】中的定稿说明，沿用其语言、结构和版式。然后在【Figma中新建空白目标Section名】中完成 Interaction 说明板。
+结构沿用 Entry → Function & Interaction，按当前画面的区域和控件组织，说明字段依赖、校验、保存、取消及错误反馈。
+本轮只编写交互说明，不修改原 UI，也不扩写 PRD 未提及的实现细节；只有会改变当前任务结果的缺失规则或冲突需要集中列出。
 ```
 
 只读审查时：
