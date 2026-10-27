@@ -11,7 +11,10 @@
     <a class="skip-link" href="#content">跳到正文</a>
     <div class="wrapper">
       <header>
-        <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+        <h1 class="site-brand"><a href="{{ '/' | relative_url }}">
+          <span class="site-brand-title">{{ site.brand_title | default: site.title }}</span>
+          {% if site.brand_subtitle %}<span class="site-brand-subtitle">{{ site.brand_subtitle }}</span>{% endif %}
+        </a></h1>
         <p>{{ site.description }}</p>
         <nav class="site-nav" aria-label="文档导航">
           <ul>

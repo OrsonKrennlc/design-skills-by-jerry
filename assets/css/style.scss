@@ -31,6 +31,18 @@ h4 {
   line-height: 1.4;
 }
 
+.site-brand-title,
+.site-brand-subtitle {
+  display: block;
+}
+
+.site-brand-subtitle {
+  margin-top: 4px;
+  color: #727272;
+  font-size: 18px;
+  font-weight: 400;
+}
+
 h2,
 h3 {
   margin-top: 32px;

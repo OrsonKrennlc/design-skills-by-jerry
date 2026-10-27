@@ -8,6 +8,8 @@ Design Skills by Jerry 提供三个可独立安装的 Agent 技能，用于电�
 
 ## 推荐：让 Agent 安装全部技能
 
+如果还没使用过 Agent 工具，请先读 [Agent 使用入门](docs/agent_intro.md)，选择并安装适合自己的工具，再回来继续。
+
 把下面的提示词发给支持安装技能的 Agent，让它一次装好本仓库的全部技能，省去逐个下载、解压和导入的重复操作：
 
 ```text
