@@ -1,4 +1,4 @@
 interface:
   display_name: "Web 交互原型设计师"
-  short_description: "学习 Figma 设计系统，设计可编辑 Web 页面、关键状态与按需演示的原型"
-  default_prompt: "使用 $web-prototype-design，参考指定 Figma 的组件与样式，为我的 Web 功能设计页面与关键状态；需要可点击演示时再建立原型连接。"
+  short_description: "学习 Figma 设计系统，设计可编辑 Web 页面与关键状态，清楚表达业务流程"
+  default_prompt: "使用 $web-prototype-design，参考指定 Figma 的组件与样式，为我的 Web 功能设计可编辑页面与关键状态，清楚表达业务依赖和操作前后关系。"

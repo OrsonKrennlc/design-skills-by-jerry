@@ -35,7 +35,7 @@ https://github.com/OrsonKrennlc/design-skills-by-jerry
 | 技能 | 适用任务 | 安装包 |
 | --- | --- | --- |
 | [tvos-interaction-spec](https://github.com/OrsonKrennlc/design-skills-by-jerry/blob/main/skills/tvos-interaction-spec/SKILL.md) | 电视页面交互说明、焦点与遥控器六键规则 | [下载 ZIP](dist/tvos-interaction-spec.zip) |
-| [web-prototype-design](https://github.com/OrsonKrennlc/design-skills-by-jerry/blob/main/skills/web-prototype-design/SKILL.md) | Web / 后台页面、关键状态与按需演示的交互原型 | [下载 ZIP](dist/web-prototype-design.zip) |
+| [web-prototype-design](https://github.com/OrsonKrennlc/design-skills-by-jerry/blob/main/skills/web-prototype-design/SKILL.md) | 可编辑的 Web / 后台页面、关键状态与任务流程 | [下载 ZIP](dist/web-prototype-design.zip) |
 | [web-interaction-spec](https://github.com/OrsonKrennlc/design-skills-by-jerry/blob/main/skills/web-interaction-spec/SKILL.md) | 依据 PRD 与当前设计稿整理 Web / 后台交互说明 | [下载 ZIP](dist/web-interaction-spec.zip) |
 
 ZIP 内含完整技能文件夹和参考资料。若导入器要求 ZIP 根层直接包含 `SKILL.md`，请按[安装教程中的说明](docs/platforms.md#先检查下载内容)选择兼容包。

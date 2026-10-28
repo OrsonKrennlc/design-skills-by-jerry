@@ -37,7 +37,7 @@ https://github.com/OrsonKrennlc/design-skills-by-jerry
 | Skill | 用来做什么 | 典型交付 | 独立下载 |
 | --- | --- | --- | --- |
 | [tvos-interaction-spec](skills/tvos-interaction-spec/SKILL.md) | 写、改、审查电视页面交互说明，核对焦点和遥控器六键 | `Screen Design / Entry Point / Interaction / Controls` | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/tvos-interaction-spec.zip) |
-| [web-prototype-design](skills/web-prototype-design/SKILL.md) | 按需求和设计系统设计 Web 页面、关键状态，按需连接演示 | 可编辑的 Figma 页面与状态；需要时增加可点击原型 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/web-prototype-design.zip) |
+| [web-prototype-design](skills/web-prototype-design/SKILL.md) | 按需求和设计系统设计 Web 页面、关键状态与任务流程 | 可编辑的 Figma 页面与关键状态 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/web-prototype-design.zip) |
 | [web-interaction-spec](skills/web-interaction-spec/SKILL.md) | 整理 Web / 后台交互说明，按需对照 PRD 审查原型与流程 | `Interaction` 说明板、正文或原型问题报告 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/web-interaction-spec.zip) |
 
 `tvos-interaction-spec` 的写作方法参考了 OS 10 Home 的交互文档，并针对 majica 项目作过调整。用于其他电视项目时，需要提供该项目的焦点规则和定稿样例。
@@ -52,7 +52,7 @@ https://github.com/OrsonKrennlc/design-skills-by-jerry
 
 1. **下载 skill。** 点击上表对应 ZIP 直接下载。ZIP 内有完整技能文件夹，包含 `SKILL.md` 与配套参考资料；不要只复制入口文件。
 2. **在你的 Agent 中安装。** 按下表选择教程。安装技能不需要搭建网站或服务器。
-3. **提供任务与交付位置。** 给 AI 当前需求、Figma 节点、定稿样例，以及“只写草稿 / 写回说明板 / 先做页面 / 需要可点击演示”。要读写 Figma 时，再单独连接 Figma。
+3. **提供任务与交付位置。** 给 AI 当前需求、Figma 节点、定稿样例，以及“只写草稿 / 写回说明板 / 制作页面与关键状态”。要读写 Figma 时，再单独连接 Figma。
 
 也可以从 **Code → Download ZIP** 获取全仓库，再取出 `skills/` 内的各技能文件夹，按平台要求分别导入。全仓库 ZIP 不能当作单个 skill 上传。
 
