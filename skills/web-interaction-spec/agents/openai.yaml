@@ -1,4 +1,4 @@
 interface:
   display_name: "Web 交互文档设计师"
-  short_description: "学习 Figma 页面和交互说明，沿用项目画布与专业语言撰写 Web 交互文档"
+  short_description: "依据 PRD 与 Figma 撰写交互说明，按需复查原型需求符合性、流程逻辑并汇总问题"
   default_prompt: "使用 $web-interaction-spec，阅读这个 Figma 页面及相邻说明，沿用项目版式撰写交互设计文档。"

@@ -38,7 +38,7 @@ https://github.com/OrsonKrennlc/design-skills-by-jerry
 | --- | --- | --- | --- |
 | [tvos-interaction-spec](skills/tvos-interaction-spec/SKILL.md) | 写、改、审查电视页面交互说明，核对焦点和遥控器六键 | `Screen Design / Entry Point / Interaction / Controls` | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/tvos-interaction-spec.zip) |
 | [web-prototype-design](skills/web-prototype-design/SKILL.md) | 按需求和设计系统设计 Web 页面、关键状态，按需连接演示 | 可编辑的 Figma 页面与状态；需要时增加可点击原型 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/web-prototype-design.zip) |
-| [web-interaction-spec](skills/web-interaction-spec/SKILL.md) | 按 PRD、当前页面和定稿整理 Web / 后台交互说明 | 页面旁的 `Interaction` 说明板或可复制正文 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/web-interaction-spec.zip) |
+| [web-interaction-spec](skills/web-interaction-spec/SKILL.md) | 整理 Web / 后台交互说明，按需对照 PRD 审查原型与流程 | `Interaction` 说明板、正文或原型问题报告 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/web-interaction-spec.zip) |
 
 `tvos-interaction-spec` 的写作方法参考了 OS 10 Home 的交互文档，并针对 majica 项目作过调整。用于其他电视项目时，需要提供该项目的焦点规则和定稿样例。
 

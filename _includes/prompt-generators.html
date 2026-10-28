@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="{{ '/assets/css/prompt-generators.css' | relative_url }}">
+<div class="prompt-workbench" id="web-prompt-generators" data-prompt-workbench>
+  <div class="pg-intro">
+    <p class="pg-eyebrow">WEB DESIGN WORKFLOW</p>
+    <h2>从需求到完整设计交付</h2>
+    <p>填写一次材料，生成两个阶段的详细提示词。先完成 UX 原型，再审查需求与流程，为每个关键状态配上交互说明。</p>
+  </div>
+
+  <div class="pg-delivery" aria-label="最终画布结构示意：每个状态的 UX 原型在左，交互说明在右">
+    <div class="pg-delivery-label">最终画布结构 <span>每个状态成对排列</span></div>
+    <div class="pg-pairs" aria-hidden="true">
+      <div class="pg-pair"><div class="pg-mini-ui"><span>0101 · 默认状态</span><i></i><i></i><i></i></div><div class="pg-mini-spec"><span>Interaction</span><b>Entry</b><i></i><b>Function &amp; Interaction</b><i></i><i></i></div></div>
+      <div class="pg-pair"><div class="pg-mini-ui"><span>0102 · 关键分支</span><i></i><i></i><i></i></div><div class="pg-mini-spec"><span>Interaction</span><b>Entry</b><i></i><b>Function &amp; Interaction</b><i></i><i></i></div></div>
+    </div>
+  </div>
+
+  <form class="pg-materials" novalidate>
+    <div class="pg-block-heading"><h3>准备本次任务的材料</h3><span data-material-count>0 / 4 项就绪</span></div>
+    <p class="pg-hint">四项材料由两个生成器共用。Figma 请优先粘贴“Copy link to selection”得到的节点链接。</p>
+    <div class="pg-fields">
+      <div class="pg-field">
+        <label for="pg-prd">PRD 文件位置 <span class="pg-required">必填</span></label>
+        <input id="pg-prd" data-input="prd" type="text" required autocomplete="off" spellcheck="false" placeholder="例如 /项目资料/合作方管理 PRD.md" aria-describedby="pg-prd-help pg-prd-error">
+        <small id="pg-prd-help">填写 Agent 可读取的路径、文档链接，或已上传的附件名。</small>
+        <small class="pg-error" id="pg-prd-error" data-error="prd"></small>
+      </div>
+      <div class="pg-field">
+        <label for="pg-wap">WAP 原型 <span class="pg-permission">只读</span></label>
+        <input id="pg-wap" data-input="wap" type="url" required autocomplete="off" spellcheck="false" placeholder="https://www.figma.com/design/…?node-id=…" aria-describedby="pg-wap-help pg-wap-error">
+        <small id="pg-wap-help">用于理解入口、页面、任务流程和关键状态。</small>
+        <small class="pg-error" id="pg-wap-error" data-error="wap"></small>
+      </div>
+      <div class="pg-field">
+        <label for="pg-library">组件库 <span class="pg-permission">只读</span></label>
+        <input id="pg-library" data-input="library" type="url" required autocomplete="off" spellcheck="false" placeholder="https://www.figma.com/design/…?node-id=…" aria-describedby="pg-library-help pg-library-error">
+        <small id="pg-library-help">仅复用现有实例、变体、变量与样式，保留组件关联。</small>
+        <small class="pg-error" id="pg-library-error" data-error="library"></small>
+      </div>
+      <div class="pg-field">
+        <label for="pg-target">目标位置 <span class="pg-permission pg-permission-write">可写</span></label>
+        <input id="pg-target" data-input="target" type="url" required autocomplete="off" spellcheck="false" placeholder="https://www.figma.com/design/…?node-id=…" aria-describedby="pg-target-help pg-target-error">
+        <small id="pg-target-help">指定专用 Page 或 Section，集中放置 UX 与说明板。</small>
+        <small class="pg-error" id="pg-target-error" data-error="target"></small>
+      </div>
+    </div>
+    <details class="pg-options">
+      <summary>补充任务范围与交付偏好 <span>选填</span></summary>
+      <div class="pg-fields pg-options-fields">
+        <div class="pg-field"><label for="pg-scope">功能名称或范围</label><input id="pg-scope" data-input="scope" type="text" autocomplete="off" placeholder="留空则按 PRD 与 WAP 对应功能确定"></div>
+        <div class="pg-field"><label for="pg-language">交互说明语言</label><select id="pg-language" data-input="language"><option value="auto">沿用目标文件，缺少样例时用中文</option><option value="zh">中文（保留实际 UI 标签）</option><option value="en">英文（保留实际 UI 标签）</option></select></div>
+      </div>
+      <label class="pg-check"><input data-input="clickable" type="checkbox"><span>第一阶段增加可点击演示<small>连接主要任务与相关恢复路径，明确模拟范围。</small></span></label>
+    </details>
+    <p class="pg-local-note">仅在当前浏览器生成文字，不上传或保存输入，也不会读取 PRD 或连接 Figma。复制后由 Agent 在你的授权环境中执行。</p>
+  </form>
+
+  <article class="pg-generator" aria-labelledby="pg-stage-one-title">
+    <div class="pg-stage-heading"><span class="pg-step">01</span><div><h3 id="pg-stage-one-title">生成 UX 原型</h3><p>web-prototype-design</p></div><span class="pg-stage-tag">先做页面</span></div>
+    <p class="pg-description">读取 PRD 与 WAP，在现有组件库内完成可编辑页面和必要状态，按任务组织画布，并为右侧说明板预留位置。</p>
+    <label class="pg-preview-label" for="pg-prompt-one">第一阶段提示词 <span data-count="one"></span></label>
+    <textarea id="pg-prompt-one" class="pg-prompt" data-output="one" readonly spellcheck="false" aria-describedby="pg-stage-one-help"></textarea>
+    <div class="pg-actions"><small id="pg-stage-one-help">四项材料有效后即可复制。先在 Agent 中完成这一阶段。</small><button type="button" data-copy="one" disabled>复制第一阶段提示词</button></div>
+  </article>
+
+  <article class="pg-generator" aria-labelledby="pg-stage-two-title">
+    <div class="pg-stage-heading"><span class="pg-step">02</span><div><h3 id="pg-stage-two-title">审查原型，补齐交互说明</h3><p>web-interaction-spec</p></div><span class="pg-stage-tag">再做交付</span></div>
+    <p class="pg-description">独立对照 PRD 检查需求与流程，汇总有证据的问题，再将每个状态的 Interaction 说明板放在对应 UX 右侧。</p>
+    <div class="pg-field pg-result-field"><label for="pg-result">第一阶段成果节点链接 <span class="pg-optional">选填</span></label><input id="pg-result" data-input="result" type="url" autocomplete="off" spellcheck="false" placeholder="第一阶段结束后，粘贴成果 Section 链接可更准确定位" aria-describedby="pg-result-help pg-result-error"><small id="pg-result-help">留空时在上方目标位置定位本轮成果；存在多个候选时要求 Agent 先确认。</small><small class="pg-error" id="pg-result-error" data-error="result"></small></div>
+    <label class="pg-check pg-repair"><input data-input="repair" type="checkbox"><span>按 PRD 修正已证实的原型问题<small>仅修正依据明确且可用现成组件解决的问题；需要业务决策的事项仍交由你确认。</small></span></label>
+    <label class="pg-preview-label" for="pg-prompt-two">第二阶段提示词 <span data-count="two"></span></label>
+    <textarea id="pg-prompt-two" class="pg-prompt" data-output="two" readonly spellcheck="false" aria-describedby="pg-stage-two-help"></textarea>
+    <div class="pg-actions"><small id="pg-stage-two-help">建议在独立会话执行，并提供同一版本的 PRD。</small><button type="button" data-copy="two" disabled>复制第二阶段提示词</button></div>
+  </article>
+  <p class="pg-status" role="status" aria-live="polite" data-copy-status></p>
+  <noscript><p>请启用 JavaScript 使用生成器；也可以继续使用下方的静态提示词范例。</p></noscript>
+</div>
+<script src="{{ '/assets/js/prompt-generators.js' | relative_url }}" defer></script>
