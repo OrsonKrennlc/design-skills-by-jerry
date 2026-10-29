@@ -42,36 +42,34 @@
         <small id="pg-target-help">指定专用 Page 或 Section，集中放置 UX 与说明板。</small>
         <small class="pg-error" id="pg-target-error" data-error="target"></small>
       </div>
-      <div class="pg-field">
-        <label for="pg-reference">参考样式链接 <span class="pg-optional">选填</span> <span class="pg-permission">只读</span></label>
-        <input id="pg-reference" data-input="reference" type="url" autocomplete="off" spellcheck="false" placeholder="https://www.figma.com/design/…?node-id=…" aria-describedby="pg-reference-help pg-reference-error">
-        <small id="pg-reference-help">可指定参考页面或定稿说明，供 Agent 学习布局、样式和表达方式。</small>
-        <small class="pg-error" id="pg-reference-error" data-error="reference"></small>
-      </div>
-    </div>
-    <div class="pg-fields pg-layout-fields">
-      <div class="pg-field">
-        <label for="pg-layout">页面整体布局 <span class="pg-optional">选填</span></label>
-        <select id="pg-layout" data-input="layout" aria-describedby="pg-layout-help">
-          <option value="auto">由 Agent 根据需求建议</option>
-          <option value="wap">参考 WAP 布局</option>
-          <option value="sidebar-topbar">侧边栏 + 顶栏</option>
-          <option value="sidebar">侧边栏 + 内容区</option>
-          <option value="topbar">顶栏导航 + 内容区</option>
-          <option value="split">左右分栏</option>
-          <option value="custom">自定义布局</option>
-        </select>
-        <small id="pg-layout-help">选择整体页面框架；Agent 可以针对不合理的 WAP 布局提出建议并与你确认。</small>
-      </div>
-      <div class="pg-field" data-custom-layout hidden>
-        <label for="pg-layout-custom">自定义布局</label>
-        <input id="pg-layout-custom" data-input="layoutCustom" type="text" autocomplete="off" placeholder="例如左侧导航，右侧列表与详情分栏" aria-describedby="pg-layout-custom-error">
-        <small class="pg-error" id="pg-layout-custom-error" data-error="layoutCustom"></small>
-      </div>
     </div>
     <details class="pg-options">
       <summary>补充任务范围与交付偏好 <span>选填</span></summary>
       <div class="pg-fields pg-options-fields">
+        <div class="pg-field">
+          <label for="pg-reference">参考样式链接 <span class="pg-permission">只读</span></label>
+          <input id="pg-reference" data-input="reference" type="url" autocomplete="off" spellcheck="false" placeholder="https://www.figma.com/design/…?node-id=…" aria-describedby="pg-reference-help pg-reference-error">
+          <small id="pg-reference-help">可指定参考页面或定稿说明，供 Agent 学习布局、样式和表达方式。</small>
+          <small class="pg-error" id="pg-reference-error" data-error="reference"></small>
+        </div>
+        <div class="pg-field">
+          <label for="pg-layout">页面整体布局</label>
+          <select id="pg-layout" data-input="layout" aria-describedby="pg-layout-help">
+            <option value="auto">由 Agent 根据需求建议</option>
+            <option value="wap">参考 WAP 布局</option>
+            <option value="sidebar-topbar">侧边栏 + 顶栏</option>
+            <option value="sidebar">侧边栏 + 内容区</option>
+            <option value="topbar">顶栏导航 + 内容区</option>
+            <option value="split">左右分栏</option>
+            <option value="custom">自定义布局</option>
+          </select>
+          <small id="pg-layout-help">选择整体页面框架；无论选择哪种布局，Agent 都可以对不合理的细节提出建议。</small>
+        </div>
+        <div class="pg-field" data-custom-layout hidden>
+          <label for="pg-layout-custom">自定义布局</label>
+          <input id="pg-layout-custom" data-input="layoutCustom" type="text" autocomplete="off" placeholder="例如左侧导航，右侧列表与详情分栏" aria-describedby="pg-layout-custom-error">
+          <small class="pg-error" id="pg-layout-custom-error" data-error="layoutCustom"></small>
+        </div>
         <div class="pg-field"><label for="pg-scope">功能名称或范围</label><input id="pg-scope" data-input="scope" type="text" autocomplete="off" placeholder="留空则按 PRD 与 WAP 对应功能确定"></div>
         <div class="pg-field"><label for="pg-language">交互说明语言</label><select id="pg-language" data-input="language"><option value="auto">沿用目标文件，缺少样例时用中文</option><option value="zh">中文（保留实际 UI 标签）</option><option value="en">英文（保留实际 UI 标签）</option></select></div>
       </div>
