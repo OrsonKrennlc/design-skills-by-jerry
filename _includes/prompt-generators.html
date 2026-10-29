@@ -3,7 +3,7 @@
   <div class="pg-intro">
     <p class="pg-eyebrow">WEB DESIGN WORKFLOW</p>
     <h2>从需求到完整设计交付</h2>
-    <p>填写一次材料，生成两个阶段的详细提示词。先完成 UX 原型，再审查需求与流程，为每个关键状态配上交互说明。</p>
+    <p>填写任务材料，生成两个阶段的提示词。先完成 UX 原型，再结合 PRD 和画布编写交互说明。</p>
   </div>
 
   <div class="pg-delivery" aria-label="最终画布结构示意：每个状态的 UX 原型在左，交互说明在右">
@@ -42,6 +42,12 @@
         <small id="pg-target-help">指定专用 Page 或 Section，集中放置 UX 与说明板。</small>
         <small class="pg-error" id="pg-target-error" data-error="target"></small>
       </div>
+      <div class="pg-field">
+        <label for="pg-reference">参考样式链接 <span class="pg-optional">选填</span> <span class="pg-permission">只读</span></label>
+        <input id="pg-reference" data-input="reference" type="url" autocomplete="off" spellcheck="false" placeholder="https://www.figma.com/design/…?node-id=…" aria-describedby="pg-reference-help pg-reference-error">
+        <small id="pg-reference-help">可指定参考页面或定稿说明，供 Agent 学习布局、样式和表达方式。</small>
+        <small class="pg-error" id="pg-reference-error" data-error="reference"></small>
+      </div>
     </div>
     <details class="pg-options">
       <summary>补充任务范围与交付偏好 <span>选填</span></summary>
@@ -63,7 +69,7 @@
 
   <article class="pg-generator" aria-labelledby="pg-stage-two-title">
     <div class="pg-stage-heading"><span class="pg-step">02</span><div><h3 id="pg-stage-two-title">审查原型，补齐交互说明</h3><p>web-interaction-spec</p></div><span class="pg-stage-tag">再做交付</span></div>
-    <p class="pg-description">独立对照 PRD 检查需求与流程，汇总有证据的问题，再将每个状态的 Interaction 说明板放在对应 UX 右侧。</p>
+    <p class="pg-description">结合 PRD 和当前 UX 编写说明，在画布中标出两者对不上的地方，供评审确认。</p>
     <div class="pg-field pg-result-field"><label for="pg-result">第一阶段成果节点链接 <span class="pg-optional">选填</span></label><input id="pg-result" data-input="result" type="url" autocomplete="off" spellcheck="false" placeholder="第一阶段结束后，粘贴成果 Section 链接可更准确定位" aria-describedby="pg-result-help pg-result-error"><small id="pg-result-help">留空时在上方目标位置定位本轮成果；存在多个候选时要求 Agent 先确认。</small><small class="pg-error" id="pg-result-error" data-error="result"></small></div>
     <label class="pg-check pg-repair"><input data-input="repair" type="checkbox"><span>按 PRD 修正已证实的原型问题<small>仅修正依据明确且可用现成组件解决的问题；需要业务决策的事项仍交由你确认。</small></span></label>
     <label class="pg-preview-label" for="pg-prompt-two">第二阶段提示词 <span data-count="two"></span></label>
