@@ -49,6 +49,26 @@
         <small class="pg-error" id="pg-reference-error" data-error="reference"></small>
       </div>
     </div>
+    <div class="pg-fields pg-layout-fields">
+      <div class="pg-field">
+        <label for="pg-layout">页面整体布局 <span class="pg-optional">选填</span></label>
+        <select id="pg-layout" data-input="layout" aria-describedby="pg-layout-help">
+          <option value="auto">由 Agent 根据需求建议</option>
+          <option value="wap">参考 WAP 布局</option>
+          <option value="sidebar-topbar">侧边栏 + 顶栏</option>
+          <option value="sidebar">侧边栏 + 内容区</option>
+          <option value="topbar">顶栏导航 + 内容区</option>
+          <option value="split">左右分栏</option>
+          <option value="custom">自定义布局</option>
+        </select>
+        <small id="pg-layout-help">选择整体页面框架；Agent 可以针对不合理的 WAP 布局提出建议并与你确认。</small>
+      </div>
+      <div class="pg-field" data-custom-layout hidden>
+        <label for="pg-layout-custom">自定义布局</label>
+        <input id="pg-layout-custom" data-input="layoutCustom" type="text" autocomplete="off" placeholder="例如左侧导航，右侧列表与详情分栏" aria-describedby="pg-layout-custom-error">
+        <small class="pg-error" id="pg-layout-custom-error" data-error="layoutCustom"></small>
+      </div>
+    </div>
     <details class="pg-options">
       <summary>补充任务范围与交付偏好 <span>选填</span></summary>
       <div class="pg-fields pg-options-fields">
@@ -64,7 +84,7 @@
     <p class="pg-description">读取 PRD 与 WAP，在现有组件库内完成可编辑页面和必要状态，按任务组织画布，并为右侧说明板预留位置。</p>
     <label class="pg-preview-label" for="pg-prompt-one">第一阶段提示词 <span data-count="one"></span></label>
     <textarea id="pg-prompt-one" class="pg-prompt" data-output="one" readonly spellcheck="false" aria-describedby="pg-stage-one-help"></textarea>
-    <div class="pg-actions"><small id="pg-stage-one-help">四项材料有效后即可复制。先在 Agent 中完成这一阶段。</small><button type="button" data-copy="one" disabled>复制第一阶段提示词</button></div>
+    <div class="pg-actions"><small id="pg-stage-one-help">四项材料有效后即可复制；如选择自定义布局，请填写布局描述。</small><button type="button" data-copy="one" disabled>复制第一阶段提示词</button></div>
   </article>
 
   <article class="pg-generator" aria-labelledby="pg-stage-two-title">

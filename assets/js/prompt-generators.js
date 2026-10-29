@@ -10,6 +10,7 @@
   const optionalLinks = ["reference", "result"];
   const touched = new Set();
   const status = root.querySelector("[data-copy-status]");
+  const customLayout = root.querySelector("[data-custom-layout]");
 
   function value(key) { return inputs[key].value.trim(); }
   function figmaError(key) {
@@ -24,7 +25,11 @@
     } catch { return "链接格式不完整，请粘贴完整的 Figma 链接。"; }
     return "";
   }
-  function error(key) { return key === "prd" ? (value(key) ? "" : "请填写 Agent 可读取的 PRD 位置。") : figmaError(key); }
+  function error(key) {
+    if (key === "prd") return value(key) ? "" : "请填写 Agent 可读取的 PRD 位置。";
+    if (key === "layoutCustom") return value("layout") === "custom" && !value(key) ? "请描述你希望采用的页面布局。" : "";
+    return figmaError(key);
+  }
   function showError(key) {
     const message = touched.has(key) ? error(key) : "";
     inputs[key].setAttribute("aria-invalid", message ? "true" : "false");
@@ -48,6 +53,15 @@
 请先读取实际材料；无法访问时说明缺少什么。需求原型、组件库和参考样式只用于阅读与复用，写入限于指定目标位置。`;
   }
   function stageOne() {
+    const layouts = {
+      auto: "根据需求、用户任务和现有产品自主建议合适的页面整体布局。",
+      wap: "页面整体布局优先参考 WAP。",
+      "sidebar-topbar": "页面整体采用侧边栏 + 顶栏 + 内容区的布局。",
+      sidebar: "页面整体采用侧边栏 + 内容区的布局。",
+      topbar: "页面整体采用顶栏导航 + 内容区的布局。",
+      split: "页面主要内容采用左右分栏布局。",
+      custom: `页面整体布局按我的描述：${source("layoutCustom", "【请描述自定义布局】")}。`
+    };
     const reference = value("reference")
       ? "参考给出的 Figma 样式，学习相关页面的布局、组件和视觉语言，并结合当前功能设计；参考内容保持只读。"
       : "结合目标产品现有页面学习布局和视觉语言。";
@@ -56,6 +70,8 @@
 ${sources()}
 
 请阅读 PRD 和需求原型，理解功能、用户操作和页面状态，梳理需要哪些页面与关键状态。检查组件库，尽量复用现成组件、变体和素材，不要重复造轮子。${reference}
+
+布局偏好：${layouts[value("layout")] || layouts.auto} WAP 用于理解需求，不必照搬其布局。如果你认为 WAP 中的布局不合理，请说明具体问题和你的改进建议，向我确认后再采用会改变页面结构的方案；不影响判断的部分可以先继续。
 
 先规划需要的页面和组件；如果缺少关键组件，告诉我具体缺口，我可以帮忙寻找。涉及业务规则不明确或材料互相冲突时及时问我；明确的部分继续推进，不要自行编造规则。
 
@@ -88,6 +104,7 @@ ${reference}${language()}
   }
 
   function render() {
+    customLayout.hidden = value("layout") !== "custom";
     outputs.one.value = stageOne();
     outputs.two.value = stageTwo();
     for (const stage of ["one", "two"]) {
@@ -96,21 +113,21 @@ ${reference}${language()}
     }
     const ready = required.filter(key => !error(key)).length;
     root.querySelector("[data-material-count]").textContent = `${ready} / 4 项就绪`;
-    buttons.one.disabled = ready !== 4 || Boolean(error("reference"));
+    buttons.one.disabled = ready !== 4 || Boolean(error("reference")) || Boolean(error("layoutCustom"));
     buttons.two.disabled = ready !== 4 || Boolean(error("reference")) || Boolean(error("result"));
-    for (const key of [...required, ...optionalLinks]) showError(key);
+    for (const key of [...required, ...optionalLinks, "layoutCustom"]) showError(key);
     status.textContent = "";
   }
 
   for (const [key, input] of Object.entries(inputs)) {
     input.addEventListener("input", render);
     input.addEventListener("change", render);
-    if ([...required, ...optionalLinks].includes(key)) input.addEventListener("blur", () => { touched.add(key); showError(key); });
+    if ([...required, ...optionalLinks, "layoutCustom"].includes(key)) input.addEventListener("blur", () => { touched.add(key); showError(key); });
   }
   root.querySelector("form").addEventListener("submit", event => event.preventDefault());
   for (const [stage, button] of Object.entries(buttons)) {
     button.addEventListener("click", async () => {
-      if (required.some(key => error(key)) || error("reference") || (stage === "two" && error("result"))) return;
+      if (required.some(key => error(key)) || error("reference") || (stage === "one" && error("layoutCustom")) || (stage === "two" && error("result"))) return;
       const output = outputs[stage];
       const text = output.value;
       let copied = false;
