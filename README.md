@@ -2,17 +2,17 @@
 
 [文档网站](https://orsonkrennlc.github.io/design-skills-by-jerry/) · [安装教程](docs/platforms.md) · [连接 Figma](docs/figma.md) · [使用方法](docs/usage.md) · [v0.1.0 Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0)
 
-本仓库提供用于设计工作的 Agent 技能，主要面向 TV 端（OS 10、OS Go!、majica）与 Web 端（SSP、WI）。技能帮助整理说明和完成重复操作，设计判断与业务规则仍需要由项目负责人确认。
+这里收集了设计工作用的 Agent 技能，主要用在 TV 端（OS 10、OS Go!、majica）与 Web 端（SSP、WI）。可以用它们整理说明、完成重复操作，设计和业务规则由项目负责人确认。
 
 ## 开始使用
 
-推荐让 Agent 一次性安装本仓库的全部技能，省去逐个下载、解压和导入的重复操作。装好后，按具体任务调用所需技能即可。
+可以让 Agent 一次装好全部技能，以后做任务时直接指定要用哪个。
 
-### 推荐：让 Agent 安装全部技能
+### 让 Agent 帮你安装
 
-如果还没使用过 Agent 工具，请先读 [Agent 使用入门](docs/agent_intro.md)，选择并安装适合自己的工具，再回来继续。
+第一次使用 Agent，可以先看 [Agent 使用入门](docs/agent_intro.md)，选好工具并安装后再继续。
 
-把下面的提示词发给支持安装技能的 Agent，再按提示授予必要权限：
+在支持安装技能的 Agent 中新建对话，复制这段话，并按提示授权：
 
 ```text
 阅读这个仓库的说明，帮我将 skills/ 下的全部技能安装到当前使用的 Agent 中：
@@ -21,9 +21,9 @@ https://github.com/OrsonKrennlc/design-skills-by-jerry
 完成后列出已安装的技能和安装位置；需要我完成的步骤，请给出具体操作。
 ```
 
-详细步骤和安装后的检查见[安装教程](docs/platforms.md)。当前应用不能直接安装时，再使用下方的手动安装方法。需要读写 Figma 时，另行完成工具连接。
+[安装教程](docs/platforms.md)中有详细步骤和安装后的检查方法。应用无法直接安装时，可以使用下面的手动方法。读写 Figma 还需另外连接工具。
 
-完整教程可在[文档网站](https://orsonkrennlc.github.io/design-skills-by-jerry/)阅读，也可以在仓库中直接查看：
+可以在[文档网站](https://orsonkrennlc.github.io/design-skills-by-jerry/)或仓库中阅读教程：
 
 | 你要做什么 | 入口 |
 | --- | --- |
@@ -44,15 +44,15 @@ https://github.com/OrsonKrennlc/design-skills-by-jerry
 
 `web-prototype-design` 包含针对 SSP 设计风格的约定。用于其他 Web 项目时，应提供当前项目的设计系统和参考页面；其他风格尚未经过完整实测。
 
-下方的手动安装方法和表中的 ZIP 下载作为备用。固定版本的独立安装包也可从 [v0.1.0 Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0) 下载。
+需要手动安装时，可以下载表中的 ZIP。[v0.1.0 Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0)保留了该版本的独立安装包。
 
 ## 备用：手动安装
 
-无法让 Agent 直接安装，或希望自己管理技能文件时，可以按以下步骤操作。
+Agent 无法安装，或你想自己管理技能文件时，可以手动操作。
 
-1. **下载 skill。** 点击上表对应 ZIP 直接下载。ZIP 内有完整技能文件夹，包含 `SKILL.md` 与配套参考资料；不要只复制入口文件。
-2. **在你的 Agent 中安装。** 按下表选择教程。安装技能不需要搭建网站或服务器。
-3. **提供任务与交付位置。** 给 AI 当前需求、Figma 节点、定稿样例，以及“只写草稿 / 写回说明板 / 制作页面与关键状态”。要读写 Figma 时，再单独连接 Figma。
+1. 下载上表中对应的 ZIP，保留完整技能文件夹，包括 `SKILL.md` 和参考资料。
+2. 按下表找到所用 Agent 的教程，完成安装，无需搭建网站或服务器。
+3. 提供当前需求、Figma 节点和定稿样例，说清要写草稿、写回说明板，还是制作页面与状态。读写 Figma 前，需另外完成连接。
 
 也可以从 **Code → Download ZIP** 获取全仓库，再取出 `skills/` 内的各技能文件夹，按平台要求分别导入。全仓库 ZIP 不能当作单个 skill 上传。
 
@@ -66,15 +66,15 @@ https://github.com/OrsonKrennlc/design-skills-by-jerry
 | WorkBuddy | 技能 → 添加技能 → 导入本地技能包 | 自定义本地 MCP 连接 Figwright | [操作步骤](docs/platforms.md#workbuddy) |
 | TRAE | 完整技能文件夹放入 `.trae/skills/`，或从技能设置导入 | 本地 MCP 连接 Figwright | [操作步骤](docs/platforms.md#trae) |
 
-以上平台能力的官方出处和版本差异见各段教程。ChatGPT 网页端与本地 Codex 的安装方式不同，不能把本地文件夹安装说成网页原生导入。
+各平台教程附有官方来源和版本说明。ChatGPT 网页端与本地 Codex 的安装方式不同，本地文件夹安装只适用于本地环境。
 
 ## Skill 与 Figma 连接是两件事
 
-Skill 约定“怎么做事”，MCP / 连接器提供“能操作什么”。安装 skill 不会自动获得 Figma 权限，也不会自动安装 Figwright。
+Skill 中保存了任务做法。要操作 Figma，还需连接 MCP / 连接器并授权，安装技能不会自动完成这些设置或安装 Figwright。
 
-- **官方连接：** 支持的平台优先安装 Figma 插件 / connector，或连接官方远程 MCP：`https://mcp.figma.com/mcp`。支持列表与写入能力见 [Figma 官方文档](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server)。
-- **通用连接：** [Figwright 仓库](https://github.com/awdr74100/figwright)，通过本地 MCP 服务与 Figma 内运行的插件连接。适用于可以启动本地 MCP 的客户端；普通云端聊天不能直接连接本机服务。
-- **官方配套技能：** [Figma MCP server guide 仓库](https://github.com/figma/mcp-server-guide)。使用官方写入工具时，按官方要求安装其工具技能；本仓库不复制分发这些第三方技能。
+- 平台支持时，可以安装 Figma 插件 / connector，或连接官方远程 MCP：`https://mcp.figma.com/mcp`。支持列表与写入能力见 [Figma 官方文档](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server)。
+- [Figwright](https://github.com/awdr74100/figwright)通过本地 MCP 服务连接 Figma 中运行的插件。客户端需要能启动本地 MCP，普通云端聊天无法直接连接本机服务。
+- 使用官方写入工具时，按要求安装 [Figma MCP server guide 仓库](https://github.com/figma/mcp-server-guide)中的配套技能。这些第三方技能不随本仓库分发。
 
 完整步骤、配置示例和故障排查见 [Figma 连接教程](docs/figma.md)。
 
@@ -88,7 +88,7 @@ Skill 约定“怎么做事”，MCP / 连接器提供“能操作什么”。�
 交付到当前页面旁的 Interaction 画布。
 ```
 
-ChatGPT 支持时可用 `@` 选择已安装技能，Codex 可用 `$`；也可以直接说“使用技能名”。没有读写工具时，明确要求先交付正文。更多独立用法、组合流程与验收方法见 [使用教程](docs/usage.md)。
+ChatGPT 的技能入口支持时可用 `@` 选择，Codex 可用 `$`，也可以直接说“使用技能名”。没有读写工具时，先让 Agent 给出正文。更多示例和检查方法见[使用教程](docs/usage.md)。
 
 ## 仓库结构
 
@@ -133,13 +133,13 @@ GitHub Pages 从 `main` 分支根目录构建，推送后自动更新。网站�
 
 ## 维护与校验
 
-打包校验需要 Python 3.10+，无第三方依赖；普通使用者可以直接让 Agent 安装技能。
+维护者打包时需要 Python 3.10+，不需要第三方依赖。只安装技能可以直接交给 Agent。
 
 ```bash
 python3 scripts/package_skills.py
 python3 scripts/package_skills.py --check
 ```
 
-第一条检查并生成独立包；第二条检查下载包及校验文件是否与源文件一致。同一份源文件生成两种 ZIP 结构，使用者只选择所在平台需要的那一种。详见 [贡献与发布](CONTRIBUTING.md)。
+第一条命令生成安装包，第二条检查安装包和校验文件是否与源文件一致。每个技能有两种 ZIP 结构，安装时按平台要求选一种。详见 [贡献与发布](CONTRIBUTING.md)。
 
 技能指令与仓库工具按 [Apache-2.0](LICENSE) 共享。Figma、Figwright 和各 AI 平台遵循各自的许可与访问规则。

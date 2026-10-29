@@ -1,52 +1,52 @@
 <link rel="stylesheet" href="{{ '/assets/css/prompt-generators.css' | relative_url }}?v={{ site.github.build_revision }}">
 <div class="prompt-workbench" id="web-prompt-generators" data-prompt-workbench>
   <div class="pg-intro">
-    <p class="pg-eyebrow">WEB DESIGN WORKFLOW</p>
-    <h2>先看全局，再逐步完成设计</h2>
-    <p>从完整 PRD 出发，先确认全局规划，再按模块制作 UX、编写交互说明。只有 PRD、没有需求原型，也可以开始。</p>
+    <p class="pg-eyebrow">Web 设计</p>
+    <h2>生成设计任务提示词</h2>
+    <p>先让 Agent 读完整份 PRD，给出规划供你确认，再逐个模块画 UX、写交互说明。没有需求原型也能使用。</p>
   </div>
   <nav class="pg-workflow" aria-label="设计工作流">
-    <a href="#pg-stage-one"><span>01</span><strong>全局规划</strong><small>先审阅计划</small></a>
-    <a href="#pg-stage-two"><span>02</span><strong>制作 UX</strong><small>按模块重复使用</small></a>
-    <a href="#pg-stage-three"><span>03</span><strong>说明与审查</strong><small>对照当前成果</small></a>
+    <a href="#pg-stage-one"><span>01</span><strong>全局规划</strong><small>确认后再开画</small></a>
+    <a href="#pg-stage-two"><span>02</span><strong>制作 UX</strong><small>逐个模块制作</small></a>
+    <a href="#pg-stage-three"><span>03</span><strong>说明与审查</strong><small>填写说明、检查问题</small></a>
   </nav>
 
   <form novalidate>
     <div class="pg-materials" aria-labelledby="pg-materials-title">
       <div class="pg-block-heading"><h3 id="pg-materials-title">共用材料</h3><span data-material-count>0 / 2 项就绪</span></div>
-      <p class="pg-hint">先准备完整 PRD 和组件库。其他材料在需要时补充。</p>
+      <p class="pg-hint">先填完整 PRD 和组件库，后面各步再补充所需材料。</p>
       <div class="pg-fields">
         <div class="pg-field">
           <label for="pg-prd">完整 PRD <span class="pg-required">必填</span></label>
-          <input id="pg-prd" data-input="prd" type="text" required autocomplete="off" spellcheck="false" placeholder="Agent 可读取的文档路径、链接或附件名" aria-describedby="pg-prd-help pg-prd-error">
-          <small id="pg-prd-help">提供完整需求，规划时会先梳理全部功能及模块衔接。</small>
+          <input id="pg-prd" data-input="prd" type="text" required autocomplete="off" spellcheck="false" placeholder="文档路径、链接，或已上传的附件名" aria-describedby="pg-prd-help pg-prd-error">
+          <small id="pg-prd-help">请提供完整需求，让 Agent 了解各模块之间的关系。</small>
           <small class="pg-error" id="pg-prd-error" data-error="prd"></small>
         </div>
         <div class="pg-field">
           <label for="pg-library">组件库链接 <span class="pg-required">规划与 UX 必填</span></label>
           <input id="pg-library" data-input="library" type="url" autocomplete="off" spellcheck="false" placeholder="https://www.figma.com/design/…?node-id=…" aria-describedby="pg-library-help pg-library-error">
-          <small id="pg-library-help">用于评估组件和复用样式；链接来源保持只读。</small>
+          <small id="pg-library-help">组件库供 Agent 查看组件和样式，不作修改。</small>
           <small class="pg-error" id="pg-library-error" data-error="library"></small>
         </div>
       </div>
     </div>
 
     <article class="pg-generator" id="pg-stage-one" aria-labelledby="pg-stage-one-title">
-      <div class="pg-stage-heading"><span class="pg-step">01</span><div><h3 id="pg-stage-one-title">通读需求，完成全局规划</h3><p>web-prototype-design</p></div><span class="pg-stage-tag">等待计划确认</span></div>
-      <p class="pg-description">梳理全部模块、页面状态和相互依赖，评估组件与制作顺序。这一步只交付计划，确认后再开画。</p>
+      <div class="pg-stage-heading"><span class="pg-step">01</span><div><h3 id="pg-stage-one-title">规划全部功能</h3><p>web-prototype-design</p></div><span class="pg-stage-tag">确认计划后继续</span></div>
+      <p class="pg-description">Agent 会列出各模块需要哪些页面、用哪些组件，以及先做什么、后做什么。你确认计划后，再进入第二步。</p>
       <details class="pg-options">
-        <summary>补充需求原型与设计偏好 <span>选填</span></summary>
+        <summary>需求原型和样式参考 <span>选填</span></summary>
         <div class="pg-fields">
           <div class="pg-field">
             <label for="pg-wap">需求原型链接（WAP）</label>
             <input id="pg-wap" data-input="wap" type="url" autocomplete="off" spellcheck="false" placeholder="有需求图时，粘贴 Figma 链接" aria-describedby="pg-wap-help pg-wap-error">
-            <small id="pg-wap-help">没有需求原型可留空，Agent 会根据完整 PRD 规划。</small>
+            <small id="pg-wap-help">没有需求原型就留空，Agent 会根据 PRD 规划。</small>
             <small class="pg-error" id="pg-wap-error" data-error="wap"></small>
           </div>
           <div class="pg-field">
             <label for="pg-reference">参考样式链接</label>
             <input id="pg-reference" data-input="reference" type="url" autocomplete="off" spellcheck="false" placeholder="Figma 参考页面或节点链接" aria-describedby="pg-reference-help pg-reference-error">
-            <small id="pg-reference-help">学习布局、组件和视觉风格，后续制作 UX 时继续沿用。</small>
+            <small id="pg-reference-help">Agent 会参考这里的页面样式，后续制作 UX 时也会用到。</small>
             <small class="pg-error" id="pg-reference-error" data-error="reference"></small>
           </div>
           <div class="pg-field">
@@ -60,7 +60,7 @@
               <option value="split">左右分栏</option>
               <option value="custom">自定义布局</option>
             </select>
-            <small id="pg-layout-help">未指定时不写入提示词。任何布局下，Agent 都可提出细节改进建议。</small>
+            <small id="pg-layout-help">留空就不写入提示词。指定布局后，Agent 仍可对不合理的细节提出建议。</small>
           </div>
           <div class="pg-field" data-custom-layout hidden>
             <label for="pg-layout-custom">自定义布局描述</label>
@@ -68,9 +68,9 @@
             <small class="pg-error" id="pg-layout-custom-error" data-error="layoutCustom"></small>
           </div>
         </div>
-        <p class="pg-hint pg-options-note">未填写的选填内容不会出现在提示词中，也不会要求补交。</p>
+        <p class="pg-hint pg-options-note">留空的选项不会写进提示词，也不会要求你补填。</p>
       </details>
-      <div class="pg-outcome"><strong>这一阶段拿到</strong><span>全局功能关系 · 画面清单与预计张数 · 组件方案 · 分阶段制作计划</span></div>
+      <div class="pg-outcome"><strong>完成后查看</strong><span>各模块的关系、页面清单和预计张数，以及组件用法和制作顺序。</span></div>
       <details class="pg-preview">
         <summary>预览第一阶段提示词 <span data-count="one"></span></summary>
         <label class="pg-sr-only" for="pg-prompt-one">第一阶段提示词</label>
@@ -80,24 +80,24 @@
     </article>
 
     <article class="pg-generator" id="pg-stage-two" aria-labelledby="pg-stage-two-title">
-      <div class="pg-stage-heading"><span class="pg-step">02</span><div><h3 id="pg-stage-two-title">依据全局规划，分模块制作 UX</h3><p>web-prototype-design</p></div><span class="pg-stage-tag">每个模块可重复</span></div>
-      <p class="pg-description">计划确认后，再指定本轮模块。制作时核对全局依赖，并沿用首个模块评审后的设计约定。</p>
+      <div class="pg-stage-heading"><span class="pg-step">02</span><div><h3 id="pg-stage-two-title">制作当前模块的 UX</h3><p>web-prototype-design</p></div><span class="pg-stage-tag">每做一个模块用一次</span></div>
+      <p class="pg-description">填入这次要做的模块。Agent 会按已确认的计划制作，并检查它与其他模块是否接得上。第一个模块定稿后，后面的模块沿用同样的设计约定。</p>
       <div class="pg-fields">
         <div class="pg-field">
-          <label for="pg-scope">本轮制作模块 <span class="pg-required">必填</span></label>
+          <label for="pg-scope">这次制作的模块 <span class="pg-required">必填</span></label>
           <input id="pg-scope" data-input="scope" type="text" autocomplete="off" placeholder="例如 Home、Platforms 或用户管理" aria-describedby="pg-scope-error">
           <small class="pg-error" id="pg-scope-error" data-error="scope"></small>
         </div>
         <div class="pg-field">
-          <label for="pg-target">UX 目标位置 <span class="pg-required">必填</span></label>
-          <input id="pg-target" data-input="target" type="url" autocomplete="off" spellcheck="false" placeholder="放置本轮成果的 Figma Page 或 Section" aria-describedby="pg-target-help pg-target-error">
-          <small id="pg-target-help">本轮只在指定位置制作和整理成果。</small>
+          <label for="pg-target">UX 放在哪里 <span class="pg-required">必填</span></label>
+          <input id="pg-target" data-input="target" type="url" autocomplete="off" spellcheck="false" placeholder="Figma Page 或 Section 链接" aria-describedby="pg-target-help pg-target-error">
+          <small id="pg-target-help">Agent 会在这个位置制作和整理当前模块。</small>
           <small class="pg-error" id="pg-target-error" data-error="target"></small>
         </div>
         <div class="pg-field pg-field-wide">
           <label for="pg-plan-mode">已确认的全局规划</label>
           <select id="pg-plan-mode" data-input="planMode"><option value="conversation">沿用同一对话中已确认的规划</option><option value="provided">提供规划位置或已确认内容</option></select>
-          <small>第二、三阶段共用。换到新对话时，请提供规划和已确认的设计约定。</small>
+          <small>第二、三步都会用到。换了对话，请把规划和已经确认的设计约定一并提供。</small>
         </div>
         <div class="pg-field pg-field-wide" data-plan-source hidden>
           <label for="pg-plan">规划位置或已确认内容 <span class="pg-required">必填</span></label>
@@ -106,10 +106,10 @@
         </div>
       </div>
       <details class="pg-canvas">
-        <summary>本轮会遵循的画布与状态规则</summary>
-        <ul><li>按任务流程分行，点击和 hover 的必要状态单独呈现并放置 cursor。</li><li>弹窗、抽屉展开时压暗背景；不在 UX 画面外散放说明文字。</li><li>每页右侧紧贴纯黑 Interaction 画板，宽 1200 px、与页面等高。</li><li>Interaction 右侧到下一页留 200 px，行间距 200 px。</li></ul>
+        <summary>页面和画板怎么排</summary>
+        <ul><li>按操作流程分行。需要展示点击或 hover 效果时，单独出图，并用 cursor 标出操作位置。</li><li>打开弹窗或抽屉时压暗背景，UX 画面外不散放说明文字。</li><li>每页右侧紧贴纯黑 Interaction 画板，宽 1200 px、与页面等高。</li><li>Interaction 右侧到下一页留 200 px，行间距 200 px。</li></ul>
       </details>
-      <div class="pg-outcome"><strong>这一阶段拿到</strong><span>可编辑 UX 与关键状态 · 配对的空白 Interaction 画板 · 模块衔接核对</span></div>
+      <div class="pg-outcome"><strong>完成后查看</strong><span>可编辑的 UX 页面和状态，每页配一块空白 Interaction 画板。Agent 还会检查模块之间的衔接。</span></div>
       <details class="pg-preview">
         <summary>预览第二阶段提示词 <span data-count="two"></span></summary>
         <label class="pg-sr-only" for="pg-prompt-two">第二阶段提示词</label>
@@ -119,21 +119,21 @@
     </article>
 
     <article class="pg-generator" id="pg-stage-three" aria-labelledby="pg-stage-three-title">
-      <div class="pg-stage-heading"><span class="pg-step">03</span><div><h3 id="pg-stage-three-title">编写交互说明，同时审查原型</h3><p>web-interaction-spec</p></div><span class="pg-stage-tag">对照最新 UX</span></div>
-      <p class="pg-description">重读当前模块 PRD，把说明写入 Interaction，并在模块 Section 外另建审查画布。默认先列问题供评审。</p>
+      <div class="pg-stage-heading"><span class="pg-step">03</span><div><h3 id="pg-stage-three-title">写交互说明，检查原型</h3><p>web-interaction-spec</p></div><span class="pg-stage-tag">使用当前版本</span></div>
+      <p class="pg-description">Agent 会重新读这部分 PRD，把说明写进 Interaction，并在模块 Section 外另建一块画布列出问题。默认等你评审后再改 UX。</p>
       <div class="pg-field pg-result-field">
-        <label for="pg-result">本轮 UX 成果链接 <span class="pg-required">必填</span></label>
+        <label for="pg-result">要写说明的 UX 链接 <span class="pg-required">必填</span></label>
         <input id="pg-result" data-input="result" type="url" autocomplete="off" spellcheck="false" placeholder="需要写说明的模块 Section 或节点链接" aria-describedby="pg-result-help pg-result-error">
-        <small id="pg-result-help">定位当前版本的画面及对应 Interaction；无需重新填写第二阶段的模块和目标位置。</small>
+        <small id="pg-result-help">填当前版本的链接即可，这一步不用再填第二步的模块和目标位置。</small>
         <small class="pg-error" id="pg-result-error" data-error="result"></small>
       </div>
       <details class="pg-options">
-        <summary>补充说明样例与交付偏好 <span>选填</span></summary>
+        <summary>说明样例和其他选项 <span>选填</span></summary>
         <div class="pg-fields">
           <div class="pg-field">
             <label for="pg-spec-reference">交互说明参考样例</label>
             <input id="pg-spec-reference" data-input="specReference" type="url" autocomplete="off" spellcheck="false" placeholder="定稿交互说明的 Figma 节点链接" aria-describedby="pg-spec-reference-error">
-            <small>用于学习文字层级、组织方式和写法。</small>
+            <small>Agent 会参考这份说明的标题、段落和写法。</small>
             <small class="pg-error" id="pg-spec-reference-error" data-error="specReference"></small>
           </div>
           <div class="pg-field">
@@ -141,9 +141,9 @@
             <select id="pg-language" data-input="language"><option value="auto">沿用项目定稿，缺少样例时用中文</option><option value="zh">中文（保留实际 UI 标签）</option><option value="en">英文（保留实际 UI 标签）</option></select>
           </div>
         </div>
-        <label class="pg-check pg-repair"><input data-input="repair" type="checkbox"><span>同步修正依据明确的原型问题<small>限本轮成果；需要业务决策的问题仍先与你确认。</small></span></label>
+        <label class="pg-check pg-repair"><input data-input="repair" type="checkbox"><span>同时修改已查明的原型问题<small>只改这次的 UX；涉及业务取舍时，仍先问你。</small></span></label>
       </details>
-      <div class="pg-outcome"><strong>这一阶段拿到</strong><span>逐状态交互说明 · Section 外的审查画布 · 有依据的问题与待确认项</span></div>
+      <div class="pg-outcome"><strong>完成后查看</strong><span>各状态的交互说明，以及 Section 外的问题清单。尚需确认或验证的内容会单独列出。</span></div>
       <details class="pg-preview">
         <summary>预览第三阶段提示词 <span data-count="three"></span></summary>
         <label class="pg-sr-only" for="pg-prompt-three">第三阶段提示词</label>
@@ -153,7 +153,7 @@
     </article>
   </form>
   <p class="pg-status" role="status" aria-live="polite" data-copy-status></p>
-  <p class="pg-local-note">所有文字仅在当前浏览器生成，不上传或保存输入，也不会读取文件或连接 Figma。复制提示词后，由 Agent 在你的环境中执行。</p>
-  <noscript><p>请启用 JavaScript 使用生成器；下方也保留了静态提示词范例。</p></noscript>
+  <p class="pg-local-note">这个页面只在浏览器里拼好提示词，不上传或保存输入，也不读取文件或连接 Figma。复制后交给 Agent 执行。</p>
+  <noscript><p>生成器需要 JavaScript。你也可以展开下方的提示词示例，手动复制。</p></noscript>
 </div>
 <script src="{{ '/assets/js/prompt-generators.js' | relative_url }}?v={{ site.github.build_revision }}" defer></script>
