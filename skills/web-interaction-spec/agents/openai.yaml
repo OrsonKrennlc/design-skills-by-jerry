@@ -1,4 +1,4 @@
 interface:
   display_name: "Web 交互文档设计师"
   short_description: "依据 PRD 与 Figma 撰写交互说明，按需复查原型需求符合性、流程逻辑并汇总问题"
-  default_prompt: "使用 $web-interaction-spec，阅读这个 Figma 页面及相邻说明，沿用项目版式撰写交互设计文档。"
+  default_prompt: "使用 $web-interaction-spec，依据 PRD 与当前 UX 撰写交互说明；Interaction 画板纯黑、宽 1200、与页面等高并紧贴其右侧。"

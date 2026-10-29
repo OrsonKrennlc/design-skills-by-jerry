@@ -21,7 +21,7 @@
 .pg-pair { display: grid; grid-template-columns: 1.1fr 1fr; min-width: 0; overflow: hidden; border: 1px solid #e1e3e7; border-radius: 3px; }
 .pg-mini-ui, .pg-mini-spec { min-width: 0; height: 112px; padding: 10px; }
 .pg-mini-ui { background: #fff; }
-.pg-mini-spec { background: #24262b; color: #fff; }
+.pg-mini-spec { background: #000; color: #fff; }
 .pg-pair span { display: block; margin-bottom: 10px; font-size: 9px; white-space: nowrap; }
 .pg-pair i { display: block; height: 4px; margin: 7px 0; background: #e8ebef; }
 .pg-mini-ui i { height: 10px; }

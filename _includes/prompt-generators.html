@@ -79,7 +79,7 @@
 
   <article class="pg-generator" aria-labelledby="pg-stage-one-title">
     <div class="pg-stage-heading"><span class="pg-step">01</span><div><h3 id="pg-stage-one-title">生成 UX 原型</h3><p>web-prototype-design</p></div><span class="pg-stage-tag">先做页面</span></div>
-    <p class="pg-description">读取 PRD 与 WAP，在现有组件库内完成可编辑页面和必要状态，按任务组织画布，并为右侧说明板预留位置。</p>
+    <p class="pg-description">读取 PRD 与 WAP，完成可编辑页面和必要状态；紧贴页面右侧预留宽 1200、与页面等高的说明区域。</p>
     <label class="pg-preview-label" for="pg-prompt-one">第一阶段提示词 <span data-count="one"></span></label>
     <textarea id="pg-prompt-one" class="pg-prompt" data-output="one" readonly spellcheck="false" aria-describedby="pg-stage-one-help"></textarea>
     <div class="pg-actions"><small id="pg-stage-one-help">四项材料有效后即可复制；如选择自定义布局，请填写布局描述。</small><button type="button" data-copy="one" disabled>复制第一阶段提示词</button></div>
@@ -87,7 +87,7 @@
 
   <article class="pg-generator" aria-labelledby="pg-stage-two-title">
     <div class="pg-stage-heading"><span class="pg-step">02</span><div><h3 id="pg-stage-two-title">审查原型，补齐交互说明</h3><p>web-interaction-spec</p></div><span class="pg-stage-tag">再做交付</span></div>
-    <p class="pg-description">结合 PRD 和当前 UX 编写说明，在画布中标出两者对不上的地方，供评审确认。</p>
+    <p class="pg-description">结合 PRD 和当前 UX 编写说明。Interaction 画板纯黑、宽 1200、与页面等高并紧贴其右侧；需求与画面不一致处标红。</p>
     <div class="pg-field pg-result-field"><label for="pg-result">第一阶段成果节点链接 <span class="pg-optional">选填</span></label><input id="pg-result" data-input="result" type="url" autocomplete="off" spellcheck="false" placeholder="第一阶段结束后，粘贴成果 Section 链接可更准确定位" aria-describedby="pg-result-help pg-result-error"><small id="pg-result-help">留空时在上方目标位置定位本轮成果；存在多个候选时要求 Agent 先确认。</small><small class="pg-error" id="pg-result-error" data-error="result"></small></div>
     <label class="pg-check pg-repair"><input data-input="repair" type="checkbox"><span>按 PRD 修正已证实的原型问题<small>仅修正依据明确且可用现成组件解决的问题；需要业务决策的事项仍交由你确认。</small></span></label>
     <label class="pg-preview-label" for="pg-prompt-two">第二阶段提示词 <span data-count="two"></span></label>
