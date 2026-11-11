@@ -46,6 +46,19 @@ python3 scripts/package_skills.py --check
 
 每个包自动带 Apache-2.0 许可证。ZIP 使用固定时间戳和文件顺序，在相同运行环境下可以重复生成相同字节。`--check` 不修改文件，可发现源文件与压缩包不一致、遗留旧包和本地文档断链。
 
+### Web 工作流版本
+
+`_data/web_workflow.json` 中的 `version` 是 Web 提示词与两个 Web skill 的配套版本，与项目的 `VERSION` 分开管理。生成器会要求 Agent 检查实际加载的 skill 版本。Agent 无法确认时，应停止任务并说明情况；网页本身不读取本地技能。
+
+修改两个 Web skill、其参考资料或 `assets/js/prompt-generators.js` 后，先更新 `_data/web_workflow.json` 的版本号，再执行：
+
+```bash
+python3 scripts/package_skills.py --sync-workflow
+python3 scripts/package_skills.py --check
+```
+
+第一条命令把版本写入两个 skill，并生成 `dist/versions/<版本号>/` 下的标准包、平铺包和校验清单。旧版本目录须保留，供已经复制旧提示词的用户下载。清单同时记录提示词生成代码和安装包的哈希值；同一版本内容发生变化时打包会失败，必须换新版本，不要覆盖旧目录。`--check` 会检查当前版本的标识、清单和安装包。
+
 脚本只支持本仓库当前的 `name` / `description` YAML 头；未来增加多行 YAML 或其他前置信息时，应先同步校验逻辑。常见模式扫描不能替代人工检查，也不能保证检测所有敏感业务信息。
 
 ## 发一个新版本

@@ -7,6 +7,14 @@
   const outputs = Object.fromEntries([...root.querySelectorAll("[data-output]")].map(output => [output.dataset.output, output]));
   const buttons = Object.fromEntries([...root.querySelectorAll("[data-copy]")].map(button => [button.dataset.copy, button]));
   const status = root.querySelector("[data-copy-status]");
+  const workflowVersion = root.dataset.workflowVersion;
+  const downloadBase = root.dataset.workflowDownloads;
+  if (!/^\d+\.\d+\.\d+$/.test(workflowVersion || "") || !downloadBase) {
+    for (const output of Object.values(outputs)) output.value = "工作流版本信息不可用，请刷新页面或联系维护者。";
+    for (const button of Object.values(buttons)) button.disabled = true;
+    status.textContent = "工作流版本信息不可用，无法生成提示词。";
+    return;
+  }
   const touched = new Set();
   const dependencies = {
     one: ["prd", "library", "wap", "reference", "layoutCustom"],
@@ -79,15 +87,23 @@
     if (value("language") === "en") return "交互说明使用英文。";
     return "交互说明沿用项目定稿的语言。没有样例时使用中文。";
   }
+  function versionCheck(skills) {
+    const links = skills.map(skill => `- ${skill}：${downloadBase}${workflowVersion}/${skill}.zip（标准包）；${downloadBase}${workflowVersion}/flat/${skill}.zip（平铺包）`).join("\n");
+    return `开始任务前，核对本次实际加载的 ${skills.join("、")} 的 SKILL.md，确认工作流版本均为 ${workflowVersion}。不要仅凭同名文件或技能列表判断。若缺少、版本不符或无法核实，停止执行，说明各技能的检查结果，并提示我按当前平台安装或更新到对应版本；如需重新加载或开启新对话，也请说明。确认后再继续。\n对应版本安装包：\n${links}`;
+  }
   function stageOne() {
-    return `使用 web-prototype-design，通读完整 PRD 并完成全局 UX 规划。
+    return `${versionCheck(["web-prototype-design", "web-interaction-spec"])}
+
+使用 web-prototype-design，通读完整 PRD 并完成全局 UX 规划。
 
 ${materials(true)}${designPreferences()}
 
 Figma 只读。交付各模块的画面清单与预计张数、组件方案、制作顺序和待确认问题。等我确认计划后再制作。`;
   }
   function stageTwo() {
-    return `使用 web-prototype-design，按已确认的全局规划制作本轮模块的可编辑 UX，为每个完整页面配空白 Interaction 画板。
+    return `${versionCheck(["web-prototype-design"])}
+
+使用 web-prototype-design，按已确认的全局规划制作本轮模块的可编辑 UX，为每个完整页面配空白 Interaction 画板。
 
 ${materials(true)}
 - 本轮模块：${source("scope", "【本轮制作模块】")}
@@ -104,7 +120,9 @@ ${planContext()}${designPreferences()}
     const repair = inputs.repair.checked
       ? "允许同步修正本轮模块内依据明确的原型问题。"
       : "UX 原型保持只读。";
-    return `使用 web-interaction-spec，对本轮模块做独立的对抗性审查。在对应 Interaction 写交互说明，在模块 Section 外另建审查画布。
+    return `${versionCheck(["web-interaction-spec"])}
+
+使用 web-interaction-spec，对本轮模块做独立的对抗性审查。在对应 Interaction 写交互说明，在模块 Section 外另建审查画布。
 
 ${materials(false)}
 - 本轮 UX 成果：${source("result", "【当前模块 UX 成果链接】")}${reference}

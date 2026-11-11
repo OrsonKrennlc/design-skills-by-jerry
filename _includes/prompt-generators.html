@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="{{ '/assets/css/prompt-generators.css' | relative_url }}?v={{ site.github.build_revision }}">
-<div class="prompt-workbench" id="web-prompt-generators" data-prompt-workbench>
+<div class="prompt-workbench" id="web-prompt-generators" data-prompt-workbench data-workflow-version="{{ site.data.web_workflow.version | escape }}" data-workflow-downloads="{{ '/dist/versions/' | absolute_url | escape }}">
   <div class="pg-intro">
     <p class="pg-eyebrow">Web 设计</p>
     <h2>生成设计任务提示词</h2>
     <p>先让 Agent 读完整份 PRD，给出规划供你确认，再逐个模块画 UX、写交互说明。没有需求原型也能使用。</p>
+    <p>提示词会要求 Agent 检查工作流技能版本；网页不会检查你安装的技能。</p>
   </div>
   <nav class="pg-workflow" aria-label="设计工作流">
     <a href="#pg-stage-one"><span>01</span><strong>全局规划</strong><small>确认后再开画</small></a>

@@ -4,6 +4,7 @@
 import argparse
 import hashlib
 import io
+import json
 import re
 import sys
 import zipfile
@@ -17,6 +18,8 @@ PRIVATE_LOCATOR = re.compile(
     r"|https?://(?:www\.)?figma\.com/(?:design|file|proto)/[A-Za-z0-9]{10,}"
     r"|node-id=\d"
 )
+WORKFLOW_SKILLS = ("web-prototype-design", "web-interaction-spec")
+WORKFLOW_VERSION = re.compile(r"^工作流版本：\d+\.\d+\.\d+$", re.MULTILINE)
 
 
 def require(condition, message):
@@ -106,9 +109,23 @@ def make_archive(skill, files, flat=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="只验证源文件与已有下载包，不修改文件")
+    parser.add_argument("--sync-workflow", action="store_true", help="将工作流版本同步到两个技能后打包")
     args = parser.parse_args()
+    require(not (args.check and args.sync_workflow), "--check 不能与 --sync-workflow 同时使用")
     version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
     require(re.fullmatch(r"\d+\.\d+\.\d+", version), "VERSION 应为主版本.次版本.修订号")
+    workflow = json.loads((ROOT / "_data/web_workflow.json").read_text(encoding="utf-8"))
+    workflow_version = workflow.get("version", "")
+    require(isinstance(workflow_version, str) and re.fullmatch(r"\d+\.\d+\.\d+", workflow_version), "Web 工作流版本无效")
+    for name in WORKFLOW_SKILLS:
+        entry = ROOT / "skills" / name / "SKILL.md"
+        content = entry.read_text(encoding="utf-8")
+        require(len(WORKFLOW_VERSION.findall(content)) == 1, f"{name} 必须有且仅有一个工作流版本标识")
+        expected = f"工作流版本：{workflow_version}"
+        if args.sync_workflow:
+            content = WORKFLOW_VERSION.sub(expected, content)
+            entry.write_text(content, encoding="utf-8")
+        require(expected in WORKFLOW_VERSION.findall(content), f"{name} 的工作流版本不一致；运行 --sync-workflow")
     skills = sorted(path for path in (ROOT / "skills").iterdir() if path.is_dir())
     require(bool(skills), "没有找到技能")
     outputs = {}
@@ -118,12 +135,30 @@ def main():
         outputs[f"flat/{skill.name}.zip"] = make_archive(skill, files, flat=True)
 
     dist = ROOT / "dist"
-    existing = {p.relative_to(dist).as_posix() for p in dist.rglob("*.zip")}
+    existing = {p.relative_to(dist).as_posix() for p in dist.rglob("*.zip") if not p.relative_to(dist).parts[0] == "versions"}
     require(not (existing - outputs.keys()), f"存在过期下载包，请核对后移除：{sorted(existing - outputs.keys())}")
     sums = "".join(
         f"{hashlib.sha256(data).hexdigest()}  {name}\n" for name, data in sorted(outputs.items())
     )
     outputs["SHA256SUMS"] = sums.encode("utf-8")
+    # Released workflow versions are immutable, including their prompt generator.
+    # A version bump is required before changing either skill or its prompt code.
+    workflow_outputs = {}
+    for name in WORKFLOW_SKILLS:
+        for prefix in ("", "flat/"):
+            archive = f"{prefix}{name}.zip"
+            workflow_outputs[archive] = outputs[archive]
+    workflow_hashes = {
+        "assets/js/prompt-generators.js": hashlib.sha256((ROOT / "assets/js/prompt-generators.js").read_bytes()).hexdigest(),
+        **{name: hashlib.sha256(data).hexdigest() for name, data in sorted(workflow_outputs.items())},
+    }
+    manifest = (json.dumps({"version": workflow_version, "sha256": workflow_hashes}, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    workflow_outputs["manifest.json"] = manifest
+    for name, data in workflow_outputs.items():
+        relative = f"versions/{workflow_version}/{name}"
+        destination = dist / relative
+        require(not destination.exists() or destination.read_bytes() == data, f"已发布的工作流版本不能修改：{relative}；请更新工作流版本并同步技能")
+        outputs[relative] = data
     for name, data in outputs.items():
         destination = dist / name
         if args.check:
@@ -135,7 +170,7 @@ def main():
     for path in [ROOT / "README.md", ROOT / "CONTRIBUTING.md", *sorted((ROOT / "docs").glob("*.md"))]:
         check_links(path)
     action = "校验通过" if args.check else "打包完成"
-    print(f"{action}：v{version}，{len(skills)} 个独立技能，{len(outputs) - 1} 个 ZIP，校验值及本地链接有效。")
+    print(f"{action}：项目 v{version}，Web 工作流 v{workflow_version}，{len(skills)} 个独立技能，校验值及本地链接有效。")
 
 
 if __name__ == "__main__":
