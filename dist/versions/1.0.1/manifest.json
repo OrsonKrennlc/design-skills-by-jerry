@@ -1,0 +1,10 @@
+{
+  "version": "1.0.1",
+  "sha256": {
+    "assets/js/prompt-generators.js": "cddceb7d3b7b3e5db66be52f677b0c6d2857d483494a7205fd666ed1e1f8dfe7",
+    "flat/web-interaction-spec.zip": "9a8adacb7904f3242993c252dd6a146359044c87e2858f427fc1746f488d800a",
+    "flat/web-prototype-design.zip": "59f94ece26b81a452d32b59fb02ff101545014714aa917972062e33c031f80c3",
+    "web-interaction-spec.zip": "6f8f02673377e4ea4881a7172f5d3ec73afdaedc075198580bf648ca5c927f19",
+    "web-prototype-design.zip": "59857ca80b1a5ec0e0d3400c9950b724367cf7ccd2f056d0faaa14d8e6efca83"
+  }
+}

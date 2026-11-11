@@ -8,8 +8,7 @@
   const buttons = Object.fromEntries([...root.querySelectorAll("[data-copy]")].map(button => [button.dataset.copy, button]));
   const status = root.querySelector("[data-copy-status]");
   const workflowVersion = root.dataset.workflowVersion;
-  const downloadBase = root.dataset.workflowDownloads;
-  if (!/^\d+\.\d+\.\d+$/.test(workflowVersion || "") || !downloadBase) {
+  if (!/^\d+\.\d+\.\d+$/.test(workflowVersion || "")) {
     for (const output of Object.values(outputs)) output.value = "工作流版本信息不可用，请刷新页面或联系维护者。";
     for (const button of Object.values(buttons)) button.disabled = true;
     status.textContent = "工作流版本信息不可用，无法生成提示词。";
@@ -88,8 +87,7 @@
     return "交互说明沿用项目定稿的语言。没有样例时使用中文。";
   }
   function versionCheck(skills) {
-    const links = skills.map(skill => `- ${skill}：${downloadBase}${workflowVersion}/${skill}.zip（标准包）；${downloadBase}${workflowVersion}/flat/${skill}.zip（平铺包）`).join("\n");
-    return `开始任务前，核对本次实际加载的 ${skills.join("、")} 的 SKILL.md，确认工作流版本均为 ${workflowVersion}。不要仅凭同名文件或技能列表判断。若缺少、版本不符或无法核实，停止执行，说明各技能的检查结果，并提示我按当前平台安装或更新到对应版本；如需重新加载或开启新对话，也请说明。确认后再继续。\n对应版本安装包：\n${links}`;
+    return `开始任务前，核对实际加载的 ${skills.join("、")} 的 SKILL.md，确认工作流版本均为 ${workflowVersion}，不要仅凭技能列表判断。若未安装、版本不符或无法核实，请停止并告诉我具体情况；确认后再继续。`;
   }
   function stageOne() {
     return `${versionCheck(["web-prototype-design", "web-interaction-spec"])}
