@@ -32,8 +32,6 @@ navigation:
     url: /docs/figma.html
   - title: 使用方法与提示词
     url: /docs/usage.html
-  - title: v0.1.0 发布说明
-    url: /docs/releases/0.1.0.html
   - title: 维护与发布
     url: /CONTRIBUTING.html
 

@@ -40,7 +40,7 @@ https://github.com/OrsonKrennlc/design-skills-by-jerry
 
 ZIP 中有技能文件夹和参考资料。如果导入器要求根层直接放 `SKILL.md`，按[安装教程中的说明](docs/platforms.md#先检查下载内容)下载兼容包。
 
-当前版本是 v0.1.0，[发布说明](docs/releases/0.1.0.md)中列出了内容。[GitHub Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0)保留了这个版本的安装包。
+历史安装包可在 [GitHub Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0) 中下载。
 
 ## 开始一个任务
 

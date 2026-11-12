@@ -114,7 +114,6 @@ design-skills-by-jerry/
 │   ├── platforms.md                Agent 批量安装与手动备用教程
 │   ├── figma.md                    官方连接、Figwright 与排查
 │   ├── usage.md                    输入、提示词与验收
-│   └── releases/                   版本发布说明
 ├── examples/mcp/                   可复制配置，不会自动启用
 ├── scripts/package_skills.py        检查并生成独立压缩包
 ├── dist/
