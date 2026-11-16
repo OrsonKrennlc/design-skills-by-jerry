@@ -4,13 +4,13 @@ title: 安装技能
 
 # 安装技能
 
-可以让 Agent 一次装好全部技能。把仓库链接发给它，它会先读安装说明，再选择当前应用支持的安装方式。
+安装技能只是把本仓库的 UX 设计规范交给 Agent。装好之后，如果还需要让 Agent 直接读取或修改 Figma 画布，请继续完成 [Figma 连接教程](figma.md)。第一次使用 Agent 可以先看 [Agent 使用入门](agent_intro.md)。
 
-## 让 Agent 帮你安装
+具备读写文件权限的桌面客户端可以直接让 Agent 自动安装；网页端或需要手动管理的客户端，按第三节的速查表导入即可。
 
-第一次使用 Agent，可以先看 [Agent 使用入门](agent_intro.md)，选好工具并安装后再继续。
+## 1. 首选方式：让 Agent 自动安装
 
-确认 Agent 能访问仓库、安装技能，然后新建对话，复制这段提示词：
+如果当前使用的客户端支持读取仓库并写入本地技能目录，新建对话并复制下面这段提示词，按界面弹窗授予下载和写入权限：
 
 ```text
 阅读这个仓库的说明，帮我将 skills/ 下的全部技能安装到当前使用的 Agent 中：
@@ -19,133 +19,119 @@ https://github.com/OrsonKrennlc/design-skills-by-jerry
 完成后列出已安装的技能和安装位置；需要我完成的步骤，请给出具体操作。
 ```
 
-按提示授予下载文件、写入技能目录的权限。它会安装这三个技能：
+它会自动装入三个技能：
 
 - `tvos-interaction-spec`：电视页面交互说明。
 - `web-prototype-design`：Web / 后台原型设计。
-- `web-interaction-spec`：Web / 后台交互说明。
+- `web-interaction-spec`：Web / 后台交互说明与原型审查。
 
-装好后，让 Agent 列出这三个技能，并打开各自的 `SKILL.md` 和参考资料。如果客户端提示刷新，就新建对话或重启。以后做任务时直接指定技能，不用重装。
+装好后若技能列表没有立刻刷新，新建对话或重启客户端即可。普通网页聊天通常无法写入本机目录，需要手动处理，具体见下文 ChatGPT 小节。
 
-要读写设计文件，还需按[Figma 连接教程](figma.md)连接工具。
+## 2. 手动安装速查与安装包说明
 
-如果应用只支持手动上传，或 Agent 没有安装权限，可以让它准备好安装包，告诉你接下来点哪里。普通网页聊天无法写入本机技能目录，具体用法见 ChatGPT 小节。
+以下步骤核对于 2026-11-16。各技能都可以单独安装和更新，下面以 `web-interaction-spec` 为例，安装其他技能时换成对应名称即可。
 
-## 备用：手动安装
+### 各平台安装方式速览
 
-想自己管理技能文件，或 Agent 无法安装时，可以手动操作。以下步骤核对于 2026-10-26，以 `web-interaction-spec` 为例，安装其他技能时换成对应名称。各技能都能单独安装和更新。
+| 平台 | 推荐安装包 | 安装入口 / 放置位置 | 呼出方式 |
+| --- | --- | --- | --- |
+| ChatGPT（本地 Codex） | 标准 ZIP 解压文件夹 | 项目 `.agents/skills/` 或全局 `~/.agents/skills/` | `$技能名` 或 `@技能名` |
+| ChatGPT（网页聊天） | 解压后上传文件 | 当前对话附件（仅单次对话有效） | 对话中指定 |
+| Claude（网页 / Desktop） | 标准 ZIP（不解压） | **Customize → Skills → Upload a skill** | 对话中直接点名 |
+| Claude Code | 标准 ZIP 解压文件夹 | 项目 `.claude/skills/` 或全局 `~/.claude/skills/` | `/技能名` 或自然语言 |
+| Antigravity | 标准 ZIP 解压文件夹 | 项目 `.agents/skills/` 或全局 `~/.gemini/config/skills/` | 对话中直接点名 |
+| WorkBuddy | 标准 ZIP 或 Flat ZIP | 左侧 **专家·技能·连接器 → 技能 → 添加技能** | 对话中直接点名 |
+| TRAE / TraeWork | 解压文件夹或 Flat ZIP | `.trae/skills/` 或 **设置 → 技能与命令** 导入 | 对话中直接点名 |
 
-### 先检查下载内容
+### 两种压缩包怎么选
 
-标准包：[web-interaction-spec.zip](../dist/web-interaction-spec.zip)。解压后应看到：
+- **标准包**（如 [web-interaction-spec.zip](../dist/web-interaction-spec.zip)）：解压后外层自带同名文件夹，里面包含 `SKILL.md`、`agents/openai.yaml`、`references/` 和 `LICENSE`。需要把整个文件夹放进项目目录，或在 Claude 网页端上传时，选标准包。
+- **Flat 兼容包**（如 [flat/web-interaction-spec.zip](../dist/flat/web-interaction-spec.zip)）：压缩包根层直接是 `SKILL.md`。如果客户端导入器提示“找不到 SKILL.md”，换用这个包。
 
-```text
-web-interaction-spec/
-├── SKILL.md
-├── agents/openai.yaml
-├── references/
-└── LICENSE
-```
+无论选哪种包，都必须保留里面的 `references/` 参考资料文件夹，否则 Agent 会缺少交互说明的写作规范和样例。
 
-复制文件夹安装时用标准包。上传器要求根层直接放 `SKILL.md` 时，用 [flat 兼容包](../dist/flat/web-interaction-spec.zip)。两种包的内容相同，区别在最外层目录，选一种安装即可。请保留 `references/`。
+## 3. 分平台安装步骤
 
 ### ChatGPT
 
 #### 桌面端的本地 Codex 环境
 
-这部分适用于 ChatGPT 桌面端的本地 Codex / 本地工作环境，以及独立 Codex 客户端。本地可以用文件夹安装独立技能；网页端通过插件跨设备分发。本仓库提供的是独立技能，没有插件清单。[官方技能说明](https://learn.chatgpt.com/docs/build-skills)
+适用于 ChatGPT 桌面端的本地 Codex / 工作环境，以及独立 Codex 客户端（见[官方技能说明](https://learn.chatgpt.com/docs/build-skills)）。
 
-1. 下载一个标准 ZIP，解压出同名完整文件夹。
-2. 打开一个本地工作文件夹，将该 skill 放到工作文件夹的 `.agents/skills/` 中：`.agents/skills/web-interaction-spec/SKILL.md`。隐藏目录不存在时新建。
-3. 若希望跨项目可用，改为放到用户目录 `~/.agents/skills/web-interaction-spec/`；Windows 对应 `%USERPROFILE%\.agents\skills\web-interaction-spec\`。项目和全局二选一，避免重复。
-4. 在本地 Codex 打开该工作文件夹，新建对话。使用 `$web-interaction-spec`，或在技能选择器中选择它；ChatGPT 的技能入口支持时使用 `@`。
-5. 让 AI 说明技能用途，并打开写作参考，确认能读到 `references/`。技能没出现时，重启客户端或新建对话。
+1. 下载标准 ZIP 并解压，得到完整的 `web-interaction-spec` 文件夹。
+2. 打开你的本地项目文件夹，把该文件夹放进 `.agents/skills/`（完整路径为 `.agents/skills/web-interaction-spec/SKILL.md`）。如果希望所有项目共用，改放到用户目录 `~/.agents/skills/`（Windows 为 `%USERPROFILE%\.agents\skills\`），项目与全局二选一，避免重复。
+3. macOS 访达默认隐藏以 `.` 开头的文件夹，在项目文件夹里按 `Command + Shift + .` 可以显示隐藏目录；若没有 `.agents/skills/`，新建即可。
+4. 在本地 Codex 打开该文件夹并新建对话，输入 `$web-interaction-spec`（或通过技能选择器 / `@` 选中），让它读取 `SKILL.md` 和 `references/` 确认可用。
 
-macOS / Linux 用户可以在工作文件夹中运行以下命令。请替换实际解压位置；目标目录已有同名技能时，先看本页末尾的更新方法：
+习惯用终端的用户也可以在项目根目录直接运行（把路径换成实际解压位置）：
 
 ```bash
 mkdir -p .agents/skills
 cp -R /实际解压位置/web-interaction-spec .agents/skills/
 ```
 
-Codex 能访问本地文件并安装技能时，直接使用页首的提示词即可。
-
 #### ChatGPT 普通网页聊天 / 云端聊天
 
-网页端不会读取电脑上的本地 Codex 配置。网页 Chat / Work 通过插件分发技能，上传 ZIP 文件本身不等于安装技能。[官方分发说明](https://developers.openai.com/plugins/build/plugins)、[网页与本地 MCP 的区别](https://learn.chatgpt.com/docs/extend/mcp)
+网页端不会读取电脑本地的 Codex 目录，上传 ZIP 本身也不会完成安装（见[官方分发说明](https://developers.openai.com/plugins/build/plugins)与[网页和本地 MCP 的区别](https://learn.chatgpt.com/docs/extend/mcp)）。
 
-在这类环境中，可以选择以下用法：
+- 如果希望以后每次对话都能直接调用技能，建议改用桌面端的本地环境按上一节安装。
+- 如果只是在当前网页对话临时试用，可以解压安装包后，把 `SKILL.md` 和用到的 `references/*.md` 作为附件发给它，让它按附件规则工作。这类附件只对当前对话有效。
 
-- 希望技能能在以后的任务中继续被发现和调用，请按上一节在桌面本地环境安装。
-- 只在当前网页对话试用，可以解压安装包，上传 `SKILL.md` 和所需的 `references/*.md`，要求 Agent 按文件工作。这些文件只作为当前对话的参考，无法保证自动加载全部资料，也不保证后续对话仍能使用。
-
-账号有官方 Figma 插件时，可以另行安装、授权，并确认当前工具是否支持写入。本地 Figwright 命令不能填进网页插件的 URL 输入框。
+网页端有官方 Figma 插件入口时可以另行安装授权；本地 `npx` 启动的 MCP 命令不能填进网页插件的 URL 输入框。
 
 ### Claude
 
-#### Claude 网页端 / Desktop 的 Skills
+#### Claude 网页端 / Desktop
 
-1. 下载一个标准 ZIP，不需要解压。
-2. 在设置中启用 **Code execution and file creation**；组织账号还需管理员允许 Skills。
-3. 打开 **Customize → Skills → + → Create skill → Upload a skill**。
-4. 上传该 ZIP，确认列表出现相应技能并启用。
-5. 新建对话，写“使用 web-interaction-spec”，附上需求和当前设计材料。
+1. 下载标准 ZIP，不需要解压。
+2. 在设置中开启 **Code execution and file creation**（组织账号需由管理员开启 Skills 权限）。
+3. 打开 **Customize → Skills → + → Create skill → Upload a skill**，上传 ZIP 并确认启用。
+4. 新建对话，写“使用 web-interaction-spec”，附上 PRD 和设计稿材料。
 
-手动导入全部技能时，分别上传三个标准 ZIP。个人技能需要在各自账号中安装或启用，不会自动共享给同事。[Claude 官方教程](https://support.claude.com/en/articles/12512180-use-skills-in-claude)
+需要装全部三个技能时，分别上传三个标准 ZIP。个人上传的技能只对当前账号生效，不会自动同步给团队成员（见 [Claude 官方教程](https://support.claude.com/en/articles/12512180-use-skills-in-claude)）。
+
+网页端若不想配置本地环境，可直接搭配 [Figma Console MCP 的 Cloud Mode](figma.md#模式-bcloud-mode免装-nodejs网页端-ai-也能写回) 写回画布。
 
 #### Claude Code
 
-将一个完整技能文件夹放入项目的 `.claude/skills/`，或用户目录的 `~/.claude/skills/`，新建会话后可用 `/web-interaction-spec` 或自然语言调用。[Claude Code 技能文档](https://code.claude.com/docs/en/skills)
-
-Figma connector、Claude Code 的官方 Figma 插件和 Figwright 是另外的连接步骤，见 [连接教程](figma.md#claude-官方连接)。
+把解压后的完整技能文件夹放进项目目录 `.claude/skills/` 或用户目录 `~/.claude/skills/`，新建会话后即可用 `/web-interaction-spec` 或自然语言调用（见 [Claude Code 技能文档](https://code.claude.com/docs/en/skills)）。Figma 连接见 [连接教程](figma.md)。
 
 ### Antigravity
 
-1. 下载一个标准 ZIP，解压完整技能文件夹。
-2. 用 Antigravity 打开你的工作文件夹。
-3. 将技能放到 `.agents/skills/web-interaction-spec/`。
-4. 新建对话，说明“使用 web-interaction-spec”，提供当前任务。
-5. 让 AI 读取 `SKILL.md` 及其引用的写作方法，检查发现是否成功。
+1. 下载标准 ZIP 并解压完整文件夹。
+2. 用 Antigravity 打开你的工作文件夹，把技能放入 `.agents/skills/web-interaction-spec/`。
+3. 新建对话，说“使用 web-interaction-spec”，让它读取 `SKILL.md` 及引用的参考资料，确认能正常发现。
 
-当前官方目录是项目 `.agents/skills/`、全局 `~/.gemini/config/skills/`。旧 `.agent/skills/` 仍兼容；使用者应以自己版本对应文档为准，不要在多处重复放同名技能。[Antigravity 官方技能文档](https://antigravity.google/docs/skills)
-
-需要 Figma 读写时，按 [Figwright 通用连接](figma.md#figwright-通用连接) 配置本地 MCP。Figma 支持目录中的 Gemini CLI 不能直接视为 Antigravity 已获相同支持。
+当前官方目录为项目 `.agents/skills/` 与全局 `~/.gemini/config/skills/`（旧 `.agent/skills/` 仍兼容），不要在多个目录里重复放置同名技能（见 [Antigravity 官方技能文档](https://antigravity.google/docs/skills)）。需要读写 Figma 时，按[连接教程](figma.md#模式-anpx-本地完整模式推荐130-个工具全开)配置 Figma Console MCP，并设置 `timeoutSeconds: 300`。
 
 ### WorkBuddy
 
-1. 下载一个标准 ZIP。
-2. 打开左侧 **专家·技能·连接器 → 技能**。
-3. 点击 **添加技能**，选择导入本地技能包，导入该 ZIP。
-4. 按当前版本的检查提示完成安装，在已安装列表启用该技能。
-5. 新建本地任务，直接说“使用 web-interaction-spec”，并提供需求和交付位置。
+1. 下载标准 ZIP（若导入器要求根层直接含 `SKILL.md`，改用 `dist/flat/` 中的同名包）。
+2. 打开左侧 **专家·技能·连接器 → 技能 → 添加技能**，选择导入本地技能包并启用。
+3. 装好后确认参考资料目录也已一并导入，不要只保留单个主文件。
+4. 新建本地任务，直接说“使用 web-interaction-spec”即可调用。
 
-这里是在自己的客户端导入技能，无需到 WorkBuddy 开放平台发布，也不用填写市场发布要求的作者和双语介绍。[WorkBuddy 用户端教程](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Skills-Market)
-
-导入器要求 ZIP 根层有 `SKILL.md` 时，换用 `dist/flat/` 中的同名包。装好后要检查参考资料，确认它们也已导入，不能只看主文件。Figma 使用自定义本地 MCP，见 [各平台添加 Figwright](figma.md#各平台添加-figwright)。
+这是在个人客户端导入技能，不需要走 WorkBuddy 开放平台的发布审核流程（见 [WorkBuddy 用户端教程](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Skills-Market)）。Figma 连接可在 **连接器** 中添加本地 Figma Console MCP，见[连接教程](figma.md#模式-anpx-本地完整模式推荐130-个工具全开)。
 
 ### TRAE
 
-#### 复制完整技能目录
+**方式 A：复制完整目录（推荐，能完整保留 `references/`）**
 
-1. 下载一个标准 ZIP，解压完整文件夹。
-2. 用 TRAE 打开工作文件夹。
-3. 将 skill 放到 `.trae/skills/web-interaction-spec/`。
-4. 在 **设置 → 技能与命令** 确认该项目技能可见。
-5. 新建对话，指定该技能或直接说“使用 web-interaction-spec”。
+1. 下载标准 ZIP 并解压完整文件夹。
+2. 用 TRAE 打开工作文件夹，把技能放入 `.trae/skills/web-interaction-spec/`（中国版全局目录在 macOS / Linux 为 `~/.trae-cn/skills/`，Windows 为 `%USERPROFILE%\.trae-cn\skills\`，其他版本以自身设置为准，见 [TRAE 官方技能文档](https://docs.trae.cn/ide_skills)）。
+3. 在 **设置 → 技能与命令** 中确认该技能已识别。
 
-这条路径能明确保留全部参考文件。中国版全局目录在 macOS / Linux 为 `~/.trae-cn/skills/`，Windows 为 `%USERPROFILE%\.trae-cn\skills\`；其他版本以自身设置为准。不要把中国版目录当成所有版本的固定目录。[TRAE 官方技能文档](https://docs.trae.cn/ide_skills)
+**方式 B：通过界面导入**
 
-#### 使用界面导入
+在 **设置 → 技能与命令 → 创建 → 项目 / 全局 → 导入本地技能** 中选择 ZIP。导入后请检查目标目录里是否包含 `references/`；如果当前版本只提取了主文件，手动把 `references/` 补齐，或改用方式 A。TraeWork 独立上传入口要求包根层直接含 `SKILL.md` 时，使用 [flat 兼容包](../dist/flat/web-interaction-spec.zip)（见 [TraeWork 官方说明](https://docs.trae.cn/work_skills)）。
 
-在 **设置 → 技能与命令 → 创建 → 项目 / 全局 → 导入本地技能** 中选择一个 ZIP。导入后检查目标目录的 `references/`；若当前版本只提取了名称、描述和主指令，手动补齐同包参考资料，或改用上面的完整目录方式。
+TRAE 也可按设置启用 `.agents/skills/`，初次使用按 `.trae/skills/` 即可。Figma MCP 运行环境请选择本地，配置见[连接教程](figma.md#模式-anpx-本地完整模式推荐130-个工具全开)。
 
-TraeWork 的独立上传入口要求包根层直接含 `SKILL.md` 时，使用 [flat 兼容包](../dist/flat/web-interaction-spec.zip)。[TraeWork 官方说明](https://docs.trae.cn/work_skills)
+## 4. 安装后检查、更新与卸载
 
-TRAE 也可按官方设置启用 `.agents/skills/`，但初次使用按上述 `.trae/skills/` 路径即可。Figma MCP 运行环境请选择本地，见 [连接教程](figma.md#各平台添加-figwright)。
+### 一键检查安装结果
 
-## 安装后检查、更新与卸载
-
-让 Agent 检查全部技能是否可用，无需立刻改 Figma：
+装好后可以在新对话里发送下面这段话，让 Agent 核对技能与 Figma 连接状态，不会修改任何设计稿：
 
 ```text
 请检查本仓库的 tvos-interaction-spec、web-prototype-design 和 web-interaction-spec 是否已安装，
@@ -154,8 +140,7 @@ TRAE 也可按官方设置启用 `.agents/skills/`，但初次使用按上述 `.
 此轮只检查能力，不修改设计稿。
 ```
 
-更新时，可以让 Agent 读取仓库最新说明，更新已安装的技能，并报告结果。项目专用规则请单独保存，以免被更新覆盖。
+### 更新与卸载
 
-手动更新请重新下载同名包。通过界面安装的技能，使用更新或替换入口；没有该入口时，卸载后重新导入。通过目录安装的，先把旧文件夹备份到技能目录之外，再整体换成新版，以免残留旧参考文件。ZIP 由源文件生成，不直接编辑。
-
-卸载时，从已安装列表移除技能，或删除对应的技能文件夹。Figma 连接需要另外处理：到平台的 MCP / 连接器设置中停用或移除。
+- **更新技能**：仓库发布新版本（如 `v1.0.2`）后，可以让 Agent 读取仓库最新说明自动更新；手动更新则重新下载新版 ZIP，通过界面安装的走更新/替换入口（没有该入口就先卸载再导入），通过文件夹安装的先把旧目录备份到技能目录之外，再整体替换为新版，以免残留旧参考文件。项目自定义的规则请单独备份，避免更新时被覆盖。
+- **卸载技能**：从客户端已安装列表移除，或删除对应的技能文件夹。之前配置过的 Figma MCP 或连接器需要到平台的连接器设置里另外停用或移除。

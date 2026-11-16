@@ -1,18 +1,17 @@
 # Design Skills by Jerry
 
-[文档网站](https://orsonkrennlc.github.io/design-skills-by-jerry/) · [安装教程](docs/platforms.md) · [连接 Figma](docs/figma.md) · [使用方法](docs/usage.md) · [v0.1.0 Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0)
+这里收集了用于辅助 UX/UI 设计的 Agent 技能，覆盖 TV 端（OS 10、OS Go!、majica）与 Web 端（SSP、WI）的原型制作、交互说明编写和原型审查。
 
-这里收集了设计工作用的 Agent 技能，主要用在 TV 端（OS 10、OS Go!、majica）与 Web 端（SSP、WI）。可以用它们整理说明、完成重复操作，设计和业务规则由项目负责人确认。
+**当前版本：v1.0.2** · [文档网站](https://orsonkrennlc.github.io/design-skills-by-jerry/) · [Releases](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases) · [版本清单](dist/versions/1.0.2/manifest.json) · [校验值](dist/SHA256SUMS)
 
-## 开始使用
+* **直接来装 Skill**：看下方[快速安装](#快速安装)与[技能清单](#技能清单与独立下载)。
+* **第一次用 Agent**：先读 [Agent 使用入门](docs/agent_intro.md)，再按[新手路径](#新手路径从零开始跑通流程)推进。
 
-可以让 Agent 一次装好全部技能，以后做任务时直接指定要用哪个。
+## 快速安装
 
-### 让 Agent 帮你安装
+### 让 Agent 自动安装
 
-第一次使用 Agent，可以先看 [Agent 使用入门](docs/agent_intro.md)，选好工具并安装后再继续。
-
-在支持安装技能的 Agent 中新建对话，复制这段话，并按提示授权：
+在支持安装技能的 Agent 中新建对话，复制下面这段话，按提示授权即可：
 
 ```text
 阅读这个仓库的说明，帮我将 skills/ 下的全部技能安装到当前使用的 Agent 中：
@@ -21,64 +20,21 @@ https://github.com/OrsonKrennlc/design-skills-by-jerry
 完成后列出已安装的技能和安装位置；需要我完成的步骤，请给出具体操作。
 ```
 
-[安装教程](docs/platforms.md)中有详细步骤和安装后的检查方法。应用无法直接安装时，可以使用下面的手动方法。读写 Figma 还需另外连接工具。
+### 各平台手动安装与 Figma 连接入口
 
-可以在[文档网站](https://orsonkrennlc.github.io/design-skills-by-jerry/)或仓库中阅读教程：
+如果客户端不支持自动安装，或你想自己管理技能文件，按所用平台选对应的装法和连接方式（全仓库压缩包不能直接当作单个 skill 上传）：
 
-| 你要做什么 | 入口 |
-| --- | --- |
-| 了解 Agent 及授权注意事项 | [Agent 使用入门](docs/agent_intro.md) |
-| 让 Agent 一次安装全部技能 | [安装教程](docs/platforms.md) |
-| 让 Agent 读写 Figma | [Figma 连接教程](docs/figma.md) |
-| 给出任务、参考材料与交付要求 | [使用方法与提示词](docs/usage.md) |
-
-## 技能列表
-
-| Skill | 用来做什么 | 典型交付 | 独立下载 |
+| 平台 | 技能怎么装 | Figma 怎么连 | 详细步骤 |
 | --- | --- | --- | --- |
-| [tvos-interaction-spec](skills/tvos-interaction-spec/SKILL.md) | 写、改、审查电视页面交互说明，核对焦点和遥控器六键 | `Screen Design / Entry Point / Interaction / Controls` | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/tvos-interaction-spec.zip) |
-| [web-prototype-design](skills/web-prototype-design/SKILL.md) | 按需求和设计系统设计 Web 页面、关键状态与任务流程 | 可编辑的 Figma 页面与关键状态 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/web-prototype-design.zip) |
-| [web-interaction-spec](skills/web-interaction-spec/SKILL.md) | 整理 Web / 后台交互说明，按需对照 PRD 审查原型与流程 | `Interaction` 说明板、正文或原型问题报告 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/web-interaction-spec.zip) |
+| ChatGPT / Codex | 桌面端本地 Codex / Work 环境安装单个技能文件夹；网页聊天可作参考附件 | 官方 Figma 插件；本地 Codex 可用官方远程 MCP 或 Figwright | [安装步骤](docs/platforms.md#chatgpt) |
+| Claude | `Customize → Skills → Upload a skill` 上传单个 ZIP；Claude Code 也可用技能文件夹 | Claude Figma connector；Claude Code 官方插件；或本地 Figwright | [安装步骤](docs/platforms.md#claude) |
+| Antigravity | 完整技能文件夹放入项目 `.agents/skills/` | 本地 Figwright MCP | [安装步骤](docs/platforms.md#antigravity) |
+| WorkBuddy | 技能 → 添加技能 → 导入本地技能包 | 自定义本地 MCP 连接 Figwright | [安装步骤](docs/platforms.md#workbuddy) |
+| TRAE | 完整技能文件夹放入 `.trae/skills/`，或从技能设置导入 | 本地 MCP 连接 Figwright | [安装步骤](docs/platforms.md#trae) |
 
-`tvos-interaction-spec` 的写作方法参考了 OS 10 Home 的交互文档，并针对 majica 项目作过调整。用于其他电视项目时，需要提供该项目的焦点规则和定稿样例。
+### 一句话启动示例
 
-`web-prototype-design` 包含针对 SSP 设计风格的约定。用于其他 Web 项目时，应提供当前项目的设计系统和参考页面；其他风格尚未经过完整实测。
-
-需要手动安装时，可以下载表中的 ZIP。[v0.1.0 Release](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases/tag/v0.1.0)保留了该版本的独立安装包。
-
-## 备用：手动安装
-
-Agent 无法安装，或你想自己管理技能文件时，可以手动操作。
-
-1. 下载上表中对应的 ZIP，保留完整技能文件夹，包括 `SKILL.md` 和参考资料。
-2. 按下表找到所用 Agent 的教程，完成安装，无需搭建网站或服务器。
-3. 提供当前需求、Figma 节点和定稿样例，说清要写草稿、写回说明板，还是制作页面与状态。读写 Figma 前，需另外完成连接。
-
-也可以从 **Code → Download ZIP** 获取全仓库，再取出 `skills/` 内的各技能文件夹，按平台要求分别导入。全仓库 ZIP 不能当作单个 skill 上传。
-
-### 各平台的手动安装入口
-
-| 平台 | 单个 skill 怎么装 | Figma 怎么连 | 教程 |
-| --- | --- | --- | --- |
-| ChatGPT | 桌面端本地 Codex / Work 环境安装单个技能文件夹；普通网页聊天可用文件参考方式，能力不同 | 有 Figma 插件入口时用官方插件；本地 Codex 可用官方 MCP 或 Figwright | [操作步骤](docs/platforms.md#chatgpt) |
-| Claude | `Customize → Skills → Upload a skill`，上传一个 ZIP；Claude Code 也可用技能文件夹 | Claude 的 Figma connector；Claude Code 的官方 Figma 插件；或本地 Figwright | [操作步骤](docs/platforms.md#claude) |
-| Antigravity | 完整技能文件夹放入项目 `.agents/skills/` | 本地 Figwright MCP | [操作步骤](docs/platforms.md#antigravity) |
-| WorkBuddy | 技能 → 添加技能 → 导入本地技能包 | 自定义本地 MCP 连接 Figwright | [操作步骤](docs/platforms.md#workbuddy) |
-| TRAE | 完整技能文件夹放入 `.trae/skills/`，或从技能设置导入 | 本地 MCP 连接 Figwright | [操作步骤](docs/platforms.md#trae) |
-
-各平台教程附有官方来源和版本说明。ChatGPT 网页端与本地 Codex 的安装方式不同，本地文件夹安装只适用于本地环境。
-
-## Skill 与 Figma 连接是两件事
-
-Skill 中保存了任务做法。要操作 Figma，还需连接 MCP / 连接器并授权，安装技能不会自动完成这些设置或安装 Figwright。
-
-- 平台支持时，可以安装 Figma 插件 / connector，或连接官方远程 MCP：`https://mcp.figma.com/mcp`。支持列表与写入能力见 [Figma 官方文档](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server)。
-- [Figwright](https://github.com/awdr74100/figwright)通过本地 MCP 服务连接 Figma 中运行的插件。客户端需要能启动本地 MCP，普通云端聊天无法直接连接本机服务。
-- 使用官方写入工具时，按要求安装 [Figma MCP server guide 仓库](https://github.com/figma/mcp-server-guide)中的配套技能。这些第三方技能不随本仓库分发。
-
-完整步骤、配置示例和故障排查见 [Figma 连接教程](docs/figma.md)。
-
-## 一句话开始
+装好技能并连上 Figma 后，可以直接在对话里指定技能名（ChatGPT 可用 `@`、Codex 可用 `$`）：
 
 ```text
 使用 web-interaction-spec。
@@ -88,57 +44,51 @@ Skill 中保存了任务做法。要操作 Figma，还需连接 MCP / 连接器�
 交付到当前页面旁的 Interaction 画布。
 ```
 
-ChatGPT 的技能入口支持时可用 `@` 选择，Codex 可用 `$`，也可以直接说“使用技能名”。没有读写工具时，先让 Agent 给出正文。更多示例和检查方法见[使用教程](docs/usage.md)。
+Skill 只规定“怎么做”，不提供 Figma 访问权限。需要读写画布时，需另外连接 [Figma 官方 MCP](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server) 或本地 [Figwright](https://github.com/awdr74100/figwright)（使用官方写入工具时，还需按 [Figma MCP server guide](https://github.com/figma/mcp-server-guide) 安装配套工具技能）。没有可写连接时，先让 Agent 输出正文草稿。
 
-## 仓库结构
+## 技能清单与独立下载
+
+| 技能名称 | 适用端与场景 | 核心交付物 | 适用范围提示 | 独立下载 |
+| --- | --- | --- | --- | --- |
+| [web-prototype-design](skills/web-prototype-design/SKILL.md) | Web 端原型设计 | 全局 UX 规划、可编辑的 Figma 页面与关键状态 | 含 SSP 设计风格约定，其他项目需提供当前设计系统与参考页 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/web-prototype-design.zip) · [Flat ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/flat/web-prototype-design.zip) |
+| [web-interaction-spec](skills/web-interaction-spec/SKILL.md) | Web 端说明与审查 | `Interaction` 说明板、正文草稿或原型审查报告 | 适用于 Web 与后台系统 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/web-interaction-spec.zip) · [Flat ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/flat/web-interaction-spec.zip) |
+| [tvos-interaction-spec](skills/tvos-interaction-spec/SKILL.md) | TV 端交互说明 | `Screen Design / Entry Point / Interaction / Controls` | 参考 OS 10 Home 与 majica，其他项目需提供焦点规则与定稿样例 | [ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/tvos-interaction-spec.zip) · [Flat ZIP](https://orsonkrennlc.github.io/design-skills-by-jerry/dist/flat/tvos-interaction-spec.zip) |
+
+每个技能提供两种打包结构：`dist/<skill-name>.zip` 内含完整技能文件夹，`dist/flat/<skill-name>.zip` 根层直接包含 `SKILL.md`，按所用平台要求选择即可。历史版本安装包可在 [Releases](https://github.com/OrsonKrennlc/design-skills-by-jerry/releases) 中获取。
+
+## 新手路径：从零开始跑通流程
+
+如果你平时不做代码开发，第一次用 Agent 辅助 Figma 设计，建议按下面四步走：
+
+1. **建立基本认知**：先读 [Agent 使用入门](docs/agent_intro.md)，了解 Prompt、Skill 与 Figma 连接的分工，以及画布防误改和结果检查方法。
+2. **安装技能包**：按 [安装教程](docs/platforms.md) 把技能导入你常用的客户端。
+3. **打通 Figma 连接**：按 [Figma 连接教程](docs/figma.md) 选择只读模式（先出文字草稿或审查报告）或可写模式（官方 MCP / Figwright）。
+4. **复制提示词开干**：到 [使用方法与提示词](docs/usage.md) 按场景选取模板，建议先拿一份不含敏感信息的 PRD 和页面副本试跑。
+
+## 仓库结构、文档网站与维护
+
+在线文档托管在 [Design Skills by Jerry](https://orsonkrennlc.github.io/design-skills-by-jerry/)，使用 Minimal 主题并从 `main` 分支根目录自动构建；首页维护在 `index.md`，教程对应 `docs/` 下的 Markdown 文件。
 
 ```text
 design-skills-by-jerry/
 ├── README.md                       GitHub 仓库入口
 ├── index.md                        文档网站首页
-├── _config.yml                     Minimal 主题与文档导航
-├── _layouts/default.html           网站布局
-├── assets/css/style.scss           中文排版与响应式适配
-├── Gemfile                         网站本地预览依赖
-├── LICENSE                         Apache-2.0
-├── VERSION                         当前技能包版本
-├── skills/                         唯一维护的技能源文件
+├── VERSION                         当前技能包版本（1.0.2）
+├── skills/                         维护中的技能源文件
 │   ├── tvos-interaction-spec/
 │   ├── web-prototype-design/
 │   └── web-interaction-spec/
-│       ├── SKILL.md
-│       ├── agents/openai.yaml      可选的名称、简介和启动提示
-│       └── references/             方法、检查点与去标识例稿
-├── docs/
-│   ├── agent_intro.md              Agent 基本概念、授权与验收
-│   ├── platforms.md                Agent 批量安装与手动备用教程
-│   ├── figma.md                    官方连接、Figwright 与排查
-│   ├── usage.md                    输入、提示词与验收
-├── examples/mcp/                   可复制配置，不会自动启用
-├── scripts/package_skills.py        检查并生成独立压缩包
-├── dist/
-│   ├── <skill-name>.zip            内含完整技能文件夹
-│   ├── flat/<skill-name>.zip       根层直接含 SKILL.md 的兼容包
-│   └── SHA256SUMS                  下载包校验值
-└── CONTRIBUTING.md                 维护和发版约定
+├── docs/                           入门、安装、连接与用法教程
+├── examples/mcp/                   可复制的 MCP 配置示例
+├── scripts/package_skills.py       打包与一致性检查脚本
+└── dist/                           独立下载包、版本清单与校验值
 ```
 
-
-## 文档网站
-
-在线地址：[Design Skills by Jerry](https://orsonkrennlc.github.io/design-skills-by-jerry/)。网站使用 [Minimal](https://github.com/pages-themes/minimal) 主题，首页提供技能下载与教程入口，各文档页共用导航。
-
-GitHub Pages 从 `main` 分支根目录构建，推送后自动更新。网站首页维护在 `index.md`，教程沿用 `docs/` 中的 Markdown 文件。主题配置、本地预览与发布检查见[维护文档网站](CONTRIBUTING.md#维护文档网站)。
-
-## 维护与校验
-
-维护者打包时需要 Python 3.10+，不需要第三方依赖。只安装技能可以直接交给 Agent。
+维护者更新技能后，可使用 Python 3.10+ 运行以下命令重新生成压缩包并校验一致性（无需第三方依赖），具体规范见 [贡献与发布](CONTRIBUTING.md)：
 
 ```bash
 python3 scripts/package_skills.py
 python3 scripts/package_skills.py --check
 ```
 
-第一条命令生成安装包，第二条检查安装包和校验文件是否与源文件一致。每个技能有两种 ZIP 结构，安装时按平台要求选一种。详见 [贡献与发布](CONTRIBUTING.md)。
-
-技能指令与仓库工具按 [Apache-2.0](LICENSE) 共享。Figma、Figwright 和各 AI 平台遵循各自的许可与访问规则。
+技能指令与仓库工具按 [Apache-2.0](LICENSE) 开源共享。Figma、Figwright 和各 AI 平台遵循各自的许可与访问规则。
