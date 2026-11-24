@@ -30,6 +30,10 @@ navigation:
     url: /docs/platforms.html
   - title: 连接 Figma
     url: /docs/figma.html
+  - title: ChatGPT + Figma 插件
+    url: /docs/chatgpt_figma.html
+  - title: WorkBuddy + Figwright
+    url: /docs/workbuddy_figwright.html
   - title: 使用方法与提示词
     url: /docs/usage.html
   - title: 维护与发布
